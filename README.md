@@ -47,7 +47,7 @@ Koshi Province, Nepal
      - Certified hallmark notices & festival greetings
 
 6. **Vercel Deployment Ready**:
-   - Includes `/api/rates.js` serverless function with edge caching and CORS headers to ensure continuous, error-free API access on Vercel.
+   - Uses Vercel Edge Rewrites for `/api/rates` with CORS and caching headers, ensuring zero serverless function cold starts and 100% static uptime.
 
 ---
 
@@ -58,9 +58,9 @@ Koshi Province, Nepal
 git clone https://github.com/aman999ver/ratessubha.git
 cd ratessubha
 
-# Start the local server
-npm start
-# or: node server.js
+# Start the local development server
+npm run dev
+# or: node dev-server.js
 ```
 
 Open your browser at **`http://localhost:3000`**.

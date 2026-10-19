@@ -1,12 +1,20 @@
 {
   "name": "shree-subha-laxmi-jewellery-rates",
   "version": "1.0.0",
-  "description": "Live Gold and Silver Rates Display for Shree Subha Laxmi Jewellery, optimized for Android TV and web display with Vercel support.",
+  "private": true,
+  "description": "Live Gold and Silver Rates Display for Shree Shubha Laxmi Jewellery, Biratnagar",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node dev-server.js"
   },
-  "keywords": ["jewellery", "gold-rates", "nepal", "android-tv", "subha-laxmi", "fenegosida"],
-  "author": "Shree Subha Laxmi Jewellery",
+  "keywords": [
+    "jewellery",
+    "gold-rates",
+    "nepal",
+    "android-tv",
+    "subha-laxmi",
+    "biratnagar",
+    "fenegosida"
+  ],
+  "author": "Shree Shubha Laxmi Jewellery",
   "license": "MIT"
 }
