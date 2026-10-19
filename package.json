@@ -6,15 +6,6 @@
   "scripts": {
     "dev": "node dev-server.js"
   },
-  "keywords": [
-    "jewellery",
-    "gold-rates",
-    "nepal",
-    "android-tv",
-    "subha-laxmi",
-    "biratnagar",
-    "fenegosida"
-  ],
   "author": "Shree Shubha Laxmi Jewellery",
   "license": "MIT"
 }
