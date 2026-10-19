@@ -1,7 +1,15 @@
 # Shree Subha Laxmi Jewellery - Live Gold & Silver Rates TV Web App
 # श्री शुभ लक्ष्मी ज्वेलरी - प्रत्यक्ष दरभाउ
 
-A live digital rates display board designed specifically for Android TV browsers (1080p / 4K landscape screens) and store displays for **Shree Subha Laxmi Jewellery (श्री शुभ लक्ष्मी ज्वेलरी)**.
+A live digital rates display board designed specifically for Android TV browsers (1080p / 4K landscape screens) and store displays for **Shree Shubha Laxmi Jewellery (श्री शुभ लक्ष्मी ज्वेलरी)**.
+
+### 📍 Visit Our Store
+**Shree Shubha Laxmi Jewellery**  
+Thakurbari Road, Ramjanaki Path, Biratnagar  
+Koshi Province, Nepal  
+
+**Direct Contact:**  
+📞 **+977 9807313993**
 
 ---
 

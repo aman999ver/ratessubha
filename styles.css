@@ -840,6 +840,92 @@ body.tv-mode {
   box-shadow: 0 0 8px var(--gold-primary);
 }
 
+/* Store Location Card (Visit Our Store) */
+.store-location-card {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.12) 0%, rgba(15, 23, 42, 0.75) 100%);
+  border: 1px solid var(--gold-border);
+  border-radius: clamp(8px, 1vh, 12px);
+  padding: clamp(6px, 1vh, 10px) clamp(8px, 1vw, 14px);
+  margin-top: clamp(6px, 1vh, 10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.location-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.loc-icon {
+  font-size: clamp(0.9rem, 1.4vh, 1.2rem);
+}
+
+.loc-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.loc-badge {
+  font-size: clamp(0.55rem, 0.8vh, 0.68rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+}
+
+.loc-store-name {
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 1.15vh, 0.95rem);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.loc-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: clamp(20px, 1.8vw, 26px);
+}
+
+.loc-address {
+  font-size: clamp(0.65rem, 1vh, 0.82rem);
+  color: #e2e8f0;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.loc-province {
+  font-size: clamp(0.6rem, 0.9vh, 0.75rem);
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.loc-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
+  font-size: clamp(0.65rem, 1vh, 0.82rem);
+}
+
+.loc-contact-label {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.loc-contact-phone {
+  color: #fef08a;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.loc-contact-phone:hover {
+  text-decoration: underline;
+}
+
 /* Trust Features Grid */
 .trust-features-grid {
   display: grid;

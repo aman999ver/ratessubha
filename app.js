@@ -10,9 +10,9 @@ const DEFAULT_CONFIG = {
   offsetSilver: 15,      // User rule: Add 15 Rs in silver tola
   refreshSeconds: 60,    // Timely refresh
   useNepaliDigits: false, // Digits format toggle
-  phone: '+977-9851000000, 01-4XXXXXX',
-  address: 'न्यूरोड, काठमाडौं, नेपाल (New Road, Kathmandu)',
-  customNotice: 'श्री शुभ लक्ष्मी ज्वेलरीमा १००% हलमार्क छाप भएका गहनाहरु उचित ज्याला र जर्तीमा उपलब्ध छन्।'
+  phone: '+977 9807313993',
+  address: 'Thakurbari Road, Ramjanaki Path, Biratnagar, Koshi Province, Nepal',
+  customNotice: 'श्री शुभ लक्ष्मी ज्वेलरी, विराटनगरमा १००% हलमार्क प्रमाणित सुन तथा चाँदीका गहनाहरु उपलब्ध छन्।'
 };
 
 // State Object
@@ -103,7 +103,15 @@ function loadConfig() {
   try {
     const saved = localStorage.getItem('subhalaxmi_cfg');
     if (saved) {
-      state.config = { ...DEFAULT_CONFIG, ...JSON.parse(saved) };
+      const parsed = JSON.parse(saved);
+      // Migrate old placeholder values to Biratnagar details
+      if (parsed.phone && parsed.phone.includes('9851000000')) {
+        parsed.phone = DEFAULT_CONFIG.phone;
+      }
+      if (parsed.address && parsed.address.includes('न्यूरोड')) {
+        parsed.address = DEFAULT_CONFIG.address;
+      }
+      state.config = { ...DEFAULT_CONFIG, ...parsed };
     }
   } catch (e) {
     console.warn('LocalStorage error:', e);
