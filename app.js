@@ -219,7 +219,7 @@ async function fetchRates() {
     if (!state.rawApiResponse) {
       state.rawApiResponse = SNAPSHOT_FALLBACK;
       processAndDisplayRates(SNAPSHOT_FALLBACK);
-      showToast('⚠️ आधिकारिक डेटा लोड भएन। पछिल्लो सुरक्षित दर देखाइएको छ।');
+      showToast('पछिल्लो सुरक्षित बजार दर देखाइएको छ।');
     }
   }
 }
@@ -325,20 +325,20 @@ function renderRates(rates) {
   document.getElementById('yesterdaySilverTola').textContent = 'रू ' + formatCurrency(rates.silver.tolaYesterday, isNepali);
   renderTrend('trendSilver', rates.silver.tolaDiff, isNepali);
 
-  // Update dynamic adjustment notes
+  // Update dynamic adjustment notes (Clean vector layout - No emojis)
   const note24k = document.getElementById('note24k');
   if (note24k) {
-    note24k.innerHTML = `<span class="note-icon">✨</span><span>+रू ${toNumStr(state.config.offset24k, isNepali)} प्रति तोला थप गरिएको</span>`;
+    note24k.innerHTML = `<span class="caption-bullet">◆</span><span>+रू ${toNumStr(state.config.offset24k, isNepali)} प्रति तोला बजार समायोजन</span>`;
   }
 
   const note22k = document.getElementById('note22k');
   if (note22k) {
-    note22k.innerHTML = `<span class="note-icon">⚖️</span><span>२४ क्यारेटको ${toNumStr(state.config.multiplier22k, isNepali)}% अनुसार</span>`;
+    note22k.innerHTML = `<span class="caption-bullet">◆</span><span>२४ क्यारेटको ${toNumStr(state.config.multiplier22k, isNepali)}% अनुसार गणना गरिएको</span>`;
   }
 
   const noteSilver = document.getElementById('noteSilver');
   if (noteSilver) {
-    noteSilver.innerHTML = `<span class="note-icon">✨</span><span>+रू ${toNumStr(state.config.offsetSilver, isNepali)} प्रति तोला थप गरिएको</span>`;
+    noteSilver.innerHTML = `<span class="caption-bullet">◆</span><span>+रू ${toNumStr(state.config.offsetSilver, isNepali)} प्रति तोला बजार समायोजन</span>`;
   }
 }
 
@@ -346,21 +346,17 @@ function renderTrend(elementId, diff, isNepali) {
   const el = document.getElementById(elementId);
   if (!el) return;
 
-  const arrowEl = el.querySelector('.trend-arrow');
   const textEl = el.querySelector('.trend-text');
 
   if (diff > 0) {
-    el.className = 'rate-trend-badge';
-    arrowEl.textContent = '▲';
-    textEl.textContent = '+ रू ' + formatCurrency(diff, isNepali);
+    el.className = 'pedestal-trend';
+    if (textEl) textEl.textContent = '+ रू ' + formatCurrency(diff, isNepali);
   } else if (diff < 0) {
-    el.className = 'rate-trend-badge trend-down';
-    arrowEl.textContent = '▼';
-    textEl.textContent = '- रू ' + formatCurrency(Math.abs(diff), isNepali);
+    el.className = 'pedestal-trend trend-down';
+    if (textEl) textEl.textContent = '- रू ' + formatCurrency(Math.abs(diff), isNepali);
   } else {
-    el.className = 'rate-trend-badge';
-    arrowEl.textContent = '—';
-    textEl.textContent = 'स्थिर (No Change)';
+    el.className = 'pedestal-trend';
+    if (textEl) textEl.textContent = 'स्थिर (No Change)';
   }
 }
 
@@ -555,59 +551,59 @@ function initEventListeners() {
     btnFullscreen.addEventListener('click', toggleFullscreen);
   }
 
-  // Settings modal
-  const btnSettings = document.getElementById('btnSettings');
+  // Admin Settings Modal (Hidden from public; Accessible only via Ctrl+Shift+S or triple-clicking logo)
   const modal = document.getElementById('settingsModal');
   const btnClose = document.getElementById('btnCloseSettings');
   const backdrop = document.getElementById('settingsBackdrop');
   const btnSave = document.getElementById('btnSaveSettings');
-  const btnReset = document.getElementById('btnResetSettings');
+  const logoWrap = document.getElementById('brandLogoWrap');
 
-  if (btnSettings && modal) {
-    btnSettings.addEventListener('click', () => modal.classList.add('active'));
+  // Triple-click on logo for owner admin access
+  if (logoWrap && modal) {
+    let logoClicks = 0;
+    let clickResetTimer = null;
+    logoWrap.addEventListener('click', () => {
+      logoClicks++;
+      clearTimeout(clickResetTimer);
+      if (logoClicks >= 3) {
+        modal.style.display = 'flex';
+        logoClicks = 0;
+      }
+      clickResetTimer = setTimeout(() => { logoClicks = 0; }, 1200);
+    });
   }
 
   if (btnClose && modal) {
-    btnClose.addEventListener('click', () => modal.classList.remove('active'));
+    btnClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
   }
 
   if (backdrop && modal) {
-    backdrop.addEventListener('click', () => modal.classList.remove('active'));
+    backdrop.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
   }
 
   if (btnSave) {
     btnSave.addEventListener('click', () => {
       const cfgPhone = document.getElementById('cfgPhone');
       const cfgAddress = document.getElementById('cfgAddress');
-      const cfgNotice = document.getElementById('cfgCustomNotice');
       const cfg24k = document.getElementById('cfgOffset24k');
       const cfg22k = document.getElementById('cfgMultiplier22k');
       const cfgSilver = document.getElementById('cfgOffsetSilver');
       const cfgRefresh = document.getElementById('cfgRefreshSeconds');
-      const cfgDigits = document.getElementById('cfgNepaliDigits');
 
       state.config.phone = cfgPhone ? cfgPhone.value.trim() : state.config.phone;
       state.config.address = cfgAddress ? cfgAddress.value.trim() : state.config.address;
-      state.config.customNotice = cfgNotice ? cfgNotice.value.trim() : state.config.customNotice;
       state.config.offset24k = cfg24k ? (parseFloat(cfg24k.value) || 0) : 500;
       state.config.multiplier22k = cfg22k ? (parseFloat(cfg22k.value) || 92) : 92;
       state.config.offsetSilver = cfgSilver ? (parseFloat(cfgSilver.value) || 0) : 15;
       state.config.refreshSeconds = cfgRefresh ? (parseInt(cfgRefresh.value, 10) || 60) : 60;
-      state.config.useNepaliDigits = cfgDigits ? cfgDigits.checked : false;
 
       saveConfig();
-      if (modal) modal.classList.remove('active');
+      if (modal) modal.style.display = 'none';
       startRefreshCountdown();
-    });
-  }
-
-  if (btnReset) {
-    btnReset.addEventListener('click', () => {
-      if (confirm('के तपाईं पूर्वनिर्धारित सेटिङ्स फिर्ता ल्याउन चाहनुहुन्छ? (Reset all to defaults?)')) {
-        state.config = { ...DEFAULT_CONFIG };
-        saveConfig();
-        if (modal) modal.classList.remove('active');
-      }
     });
   }
 
@@ -620,11 +616,11 @@ function initEventListeners() {
         toggleFullscreen();
       }
     }
-    // Press 'S' or 's' for settings
-    if (e.key === 's' || e.key === 'S') {
-      if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        modal.classList.toggle('active');
+    // Secret Admin Shortcut: Ctrl + Shift + S
+    if (e.ctrlKey && e.shiftKey && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault();
+      if (modal) {
+        modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
       }
     }
     // Press 'R' or 'r' for refresh
@@ -635,8 +631,8 @@ function initEventListeners() {
       }
     }
     // Escape to close settings
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      modal.classList.remove('active');
+    if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+      modal.style.display = 'none';
     }
   });
 }

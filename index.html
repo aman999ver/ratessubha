@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Shree Subha Laxmi Jewellery | Live Gold & Silver Rates Today | श्री शुभ लक्ष्मी ज्वेलरी</title>
+  <title>Shree Shubha Laxmi Jewellery | Live Rates Board | श्री शुभ लक्ष्मी ज्वेलरी</title>
   
-  <meta name="description" content="Live 24K Gold, 22K Gold, and Silver Rates for Shree Subha Laxmi Jewellery. Real-time rates updated directly for Android TV and digital display.">
-  <meta name="theme-color" content="#070a12">
+  <meta name="description" content="Live 24K Gold, 22K Gold, and Silver Rates for Shree Shubha Laxmi Jewellery, Biratnagar. Official daily rates updated directly for Android TV and digital display.">
+  <meta name="theme-color" content="#05070d">
   <link rel="icon" type="image/png" href="assets/logo.png">
 
   <!-- Google Fonts for Luxury Jewellery Display -->
@@ -17,25 +17,27 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="tv-mode">
-  <!-- Subtle Ambient Glow Effects -->
+  <!-- Soft Royal Ambient Glows -->
   <div class="ambient-glow glow-top-left"></div>
   <div class="ambient-glow glow-top-right"></div>
   <div class="ambient-glow glow-center"></div>
 
   <div class="tv-container" id="tvContainer">
-    <!-- HEADER SECTION -->
+    <!-- ====================================================================
+         HEADER SECTION (PROMINENT LOGO, ROYAL BRANDING & LIVE CLOCK)
+         ==================================================================== -->
     <header class="tv-header">
       <div class="brand-block">
-        <div class="brand-logo-wrap">
-          <img src="assets/logo.png" alt="Shree Subha Laxmi Jewellery Logo" class="brand-logo" id="brandLogo">
-          <div class="logo-ring"></div>
+        <div class="brand-logo-wrap" id="brandLogoWrap" title="Shree Shubha Laxmi Jewellery">
+          <img src="assets/logo.png" alt="Shree Shubha Laxmi Jewellery Royal Emblem" class="brand-logo" id="brandLogo">
+          <div class="logo-aura"></div>
         </div>
         <div class="brand-titles">
           <h1 class="brand-nepali" id="brandNepaliTitle">श्री शुभ लक्ष्मी ज्वेलरी</h1>
-          <h2 class="brand-english" id="brandEnglishTitle">SHREE SUBHA LAXMI JEWELLERY</h2>
+          <h2 class="brand-english" id="brandEnglishTitle">SHREE SHUBHA LAXMI JEWELLERY</h2>
           <div class="brand-sub-badge">
-            <span class="badge-dot"></span>
-            <span id="brandTagline">शुद्धता, गुणस्तर र विश्वासको ५ दशक • Hallmark Certified</span>
+            <span class="badge-accent-line"></span>
+            <span class="store-tagline">ठाकुरबारी रोड, विराटनगर • 100% HALLMARK CERTIFIED GOLD & SILVER</span>
           </div>
         </div>
       </div>
@@ -43,9 +45,9 @@
       <div class="header-center-info">
         <div class="live-pill">
           <span class="pulse-beacon"></span>
-          <span class="live-text">प्रत्यक्ष दर / LIVE RATES</span>
+          <span class="live-text">LIVE MARKET RATES</span>
         </div>
-        <div class="refresh-countdown" id="refreshContainer" title="Click to refresh now">
+        <div class="refresh-countdown" id="refreshContainer" title="Click to refresh">
           <svg class="progress-ring" width="28" height="28" viewBox="0 0 36 36">
             <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
             <path class="ring-fill" id="countdownCircle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -58,196 +60,273 @@
         <div class="time-display" id="timeDisplay">--:--:-- --</div>
         <div class="date-row">
           <span class="nepali-date" id="nepaliDateDisplay">लोड हुँदैछ...</span>
-          <span class="date-separator">•</span>
+          <span class="date-separator">/</span>
           <span class="english-date" id="englishDateDisplay">Loading date...</span>
         </div>
       </div>
 
-      <!-- Quick Control Action Icons (Accessible via Remote / Mouse) -->
+      <!-- Quick Action: Fullscreen Only (Settings is safely hidden from public) -->
       <div class="header-actions">
         <button class="icon-btn" id="btnRefresh" title="Refresh Rates Now" aria-label="Refresh Rates">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+            <path d="M16 16h5v5"/>
           </svg>
         </button>
         <button class="icon-btn" id="btnFullscreen" title="Toggle TV Fullscreen (Press F)" aria-label="Fullscreen">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-          </svg>
-        </button>
-        <button class="icon-btn" id="btnSettings" title="Settings (Press S)" aria-label="Settings">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
           </svg>
         </button>
       </div>
     </header>
 
-    <!-- MAIN BODY CONTENT -->
+    <!-- ====================================================================
+         MAIN BODY CONTENT (FLUID LUXURY RATES + REFINED SHOWCASE)
+         ==================================================================== -->
     <main class="tv-main">
-      <!-- LEFT / CENTER: LUXURY RATES DISPLAY (3 PRIMARY CARDS) -->
-      <section class="rates-section" aria-label="Live Jewellery Rates">
-        <div class="rates-cards-grid">
+      <!-- LEFT: MASTER RATE BOARD (SEAMLESS 3-PEDESTAL ARCHITECTURE) -->
+      <section class="rates-section" aria-label="Today Gold and Silver Market Rates">
+        <div class="rates-board-container">
           
-          <!-- CARD 1: 24K GOLD (छापावाल सुन) -->
-          <article class="rate-card card-gold-24k" id="cardGold24k">
-            <div class="card-gold-accent"></div>
-            <div class="card-header">
-              <div class="card-icon-box gold-icon">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-                  <path d="M21 7.28l-8.5-4.25a1 1 0 0 0-1 0L3 7.28a1 1 0 0 0-.5.88v7.68a1 1 0 0 0 .5.88l8.5 4.25a1 1 0 0 0 1 0l8.5-4.25a1 1 0 0 0 .5-.88V8.16a1 1 0 0 0-.5-.88zM12 4.41l6.73 3.37L12 11.15 5.27 7.78 12 4.41zm-7 5.15l6 3v6.73l-6-3V9.56zm8 9.73v-6.73l6-3v6.73l-6 3z"/>
+          <!-- CARD 1: 24K PURE GOLD (छापावाल सुन) -->
+          <article class="rate-pedestal pedestal-24k" id="cardGold24k">
+            <div class="pedestal-halo"></div>
+            
+            <div class="pedestal-header">
+              <div class="metal-icon-wrapper icon-gold-24k">
+                <!-- Bespoke Gold Ingot Bullion Vector -->
+                <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+                  <path d="M6 18L10 8H22L26 18H6Z" fill="url(#goldGradA)" stroke="#fef08a" stroke-width="1.2"/>
+                  <path d="M6 18L10 24H22L26 18H6Z" fill="url(#goldGradB)" stroke="#ca8a04" stroke-width="1.2"/>
+                  <path d="M10 8L6 18L10 24H22L26 18L22 8H10Z" stroke="#fde047" stroke-width="1"/>
+                  <text x="16" y="16.5" font-family="'Outfit', sans-serif" font-size="5" font-weight="900" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">24K 99.9</text>
+                  <defs>
+                    <linearGradient id="goldGradA" x1="6" y1="8" x2="26" y2="18" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#fef08a"/>
+                      <stop offset="0.5" stop-color="#eab308"/>
+                      <stop offset="1" stop-color="#ca8a04"/>
+                    </linearGradient>
+                    <linearGradient id="goldGradB" x1="6" y1="18" x2="26" y2="24" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ca8a04"/>
+                      <stop offset="1" stop-color="#854d0e"/>
+                    </linearGradient>
+                  </defs>
                 </svg>
               </div>
-              <div class="card-title-group">
-                <div class="karat-tag gold-tag">24K PURE GOLD (99.9%)</div>
-                <h3 class="card-nepali-title">छापावाल सुन (२४ क्यारेट)</h3>
-                <span class="card-eng-subtitle">Fine Hallmark Gold</span>
+
+              <div class="metal-title-wrap">
+                <span class="purity-badge purity-24k">24K PURE GOLD • 99.9%</span>
+                <h3 class="pedestal-nepali-title">छापावाल सुन</h3>
+                <span class="pedestal-eng-subtitle">Fine Hallmark Bullion</span>
               </div>
-              <div class="rate-trend-badge" id="trend24k">
-                <span class="trend-arrow">▲</span>
+
+              <div class="pedestal-trend" id="trend24k">
+                <span class="trend-icon">
+                  <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor">
+                    <path d="M6 2L10 7H2L6 2Z"/>
+                  </svg>
+                </span>
                 <span class="trend-text">+ रू ५००</span>
               </div>
             </div>
 
-            <div class="card-price-primary">
-              <div class="price-unit-label">
-                <span class="unit-main">प्रति १ तोला दर</span>
-                <span class="unit-sub">Rate Per 1 Tola (11.66g)</span>
+            <!-- Primary 1 Tola Price (Large Majestic Fluid Flow) -->
+            <div class="pedestal-primary-price">
+              <div class="unit-banner">
+                <span class="unit-np">प्रति १ तोला दर</span>
+                <span class="unit-en">Per 1 Tola (11.66g)</span>
               </div>
-              <div class="price-value-container">
-                <span class="currency-symbol">रू</span>
-                <span class="price-amount" id="price24kTola">--,--,---</span>
-              </div>
-            </div>
-
-            <div class="card-price-secondary">
-              <div class="price-unit-label">
-                <span class="unit-main">प्रति १० ग्राम दर</span>
-                <span class="unit-sub">Per 10 Grams</span>
-              </div>
-              <div class="price-value-secondary">
-                <span class="currency-symbol-sm">रू</span>
-                <span class="price-amount-sm" id="price24k10g">--,--,---</span>
+              <div class="amount-line">
+                <span class="npr-currency">रू</span>
+                <span class="npr-amount amount-24k" id="price24kTola">--,--,---</span>
               </div>
             </div>
 
-            <div class="card-footer-meta">
-              <div class="yesterday-compare">
-                <span class="meta-label">हिजोको दर (Yesterday):</span>
-                <span class="meta-val" id="yesterday24kTola">रू --,---</span>
+            <!-- Elegant Hairline Divider -->
+            <div class="pedestal-divider"></div>
+
+            <!-- Secondary 10 Gram Price -->
+            <div class="pedestal-secondary-price">
+              <div class="sec-unit-col">
+                <span class="sec-np">प्रति १० ग्राम</span>
+                <span class="sec-en">Per 10 Grams</span>
               </div>
-              <div class="adjustment-note" id="note24k">
-                <span class="note-icon">✨</span>
-                <span>+रू ५०० प्रति तोला थप गरिएको</span>
+              <div class="sec-amount-col">
+                <span class="sec-currency">रू</span>
+                <span class="sec-amount" id="price24k10g">--,--,---</span>
+              </div>
+            </div>
+
+            <!-- Footer Details -->
+            <div class="pedestal-footer">
+              <div class="prev-day-row">
+                <span class="prev-label">हिजोको दर / Yesterday:</span>
+                <span class="prev-value" id="yesterday24kTola">रू --,---</span>
+              </div>
+              <div class="formula-caption" id="note24k">
+                <span class="caption-bullet">◆</span>
+                <span>+रू ५०० प्रति तोला बजार समायोजन</span>
               </div>
             </div>
           </article>
 
-          <!-- CARD 2: 22K GOLD (२२ क्यारेट सुन) -->
-          <article class="rate-card card-gold-22k" id="cardGold22k">
-            <div class="card-gold-accent accent-22k"></div>
-            <div class="card-header">
-              <div class="card-icon-box gold-icon-22k">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-                  <path d="M12 2L9.5 8.5 2 9.2l5.5 4.8L6 21.5 12 18l6 3.5-1.5-7.5 5.5-4.8-7.5-.7L12 2z"/>
+          <!-- CARD 2: 22K JEWELLERY GOLD (२२ क्यारेट गहना सुन) -->
+          <article class="rate-pedestal pedestal-22k" id="cardGold22k">
+            <div class="pedestal-halo halo-22k"></div>
+
+            <div class="pedestal-header">
+              <div class="metal-icon-wrapper icon-gold-22k">
+                <!-- Bespoke Hallmark Crown Vector -->
+                <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+                  <path d="M5 23L7 11L12 16L16 8L20 16L25 11L27 23H5Z" fill="url(#crownGrad)" stroke="#fde68a" stroke-width="1.2" stroke-linejoin="round"/>
+                  <circle cx="7" cy="10" r="1.5" fill="#fde68a"/>
+                  <circle cx="16" cy="7" r="1.8" fill="#fde68a"/>
+                  <circle cx="25" cy="10" r="1.5" fill="#fde68a"/>
+                  <rect x="5" y="23" width="22" height="3" rx="1" fill="#b45309" stroke="#fde68a" stroke-width="0.8"/>
+                  <defs>
+                    <linearGradient id="crownGrad" x1="5" y1="8" x2="27" y2="24" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#fde68a"/>
+                      <stop offset="0.4" stop-color="#f59e0b"/>
+                      <stop offset="1" stop-color="#b45309"/>
+                    </linearGradient>
+                  </defs>
                 </svg>
               </div>
-              <div class="card-title-group">
-                <div class="karat-tag gold-tag-22k">22K JEWELLERY GOLD (91.6%)</div>
-                <h3 class="card-nepali-title">२२ क्यारेट गहना सुन</h3>
-                <span class="card-eng-subtitle">Standard 22K Ornaments</span>
+
+              <div class="metal-title-wrap">
+                <span class="purity-badge purity-22k">22K JEWELLERY • 91.6%</span>
+                <h3 class="pedestal-nepali-title">२२ क्यारेट गहना सुन</h3>
+                <span class="pedestal-eng-subtitle">Standard Hallmark Ornaments</span>
               </div>
-              <div class="rate-trend-badge" id="trend22k">
-                <span class="trend-arrow">▲</span>
+
+              <div class="pedestal-trend" id="trend22k">
+                <span class="trend-icon">
+                  <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor">
+                    <path d="M6 2L10 7H2L6 2Z"/>
+                  </svg>
+                </span>
                 <span class="trend-text">+ रू ४६०</span>
               </div>
             </div>
 
-            <div class="card-price-primary">
-              <div class="price-unit-label">
-                <span class="unit-main">प्रति १ तोला दर</span>
-                <span class="unit-sub">Rate Per 1 Tola (11.66g)</span>
+            <!-- Primary 1 Tola Price -->
+            <div class="pedestal-primary-price">
+              <div class="unit-banner">
+                <span class="unit-np">प्रति १ तोला दर</span>
+                <span class="unit-en">Per 1 Tola (11.66g)</span>
               </div>
-              <div class="price-value-container">
-                <span class="currency-symbol">रू</span>
-                <span class="price-amount" id="price22kTola">--,--,---</span>
-              </div>
-            </div>
-
-            <div class="card-price-secondary">
-              <div class="price-unit-label">
-                <span class="unit-main">प्रति १० ग्राम दर</span>
-                <span class="unit-sub">Per 10 Grams</span>
-              </div>
-              <div class="price-value-secondary">
-                <span class="currency-symbol-sm">रू</span>
-                <span class="price-amount-sm" id="price22k10g">--,--,---</span>
+              <div class="amount-line">
+                <span class="npr-currency">रू</span>
+                <span class="npr-amount amount-22k" id="price22kTola">--,--,---</span>
               </div>
             </div>
 
-            <div class="card-footer-meta">
-              <div class="yesterday-compare">
-                <span class="meta-label">हिजोको दर (Yesterday):</span>
-                <span class="meta-val" id="yesterday22kTola">रू --,---</span>
+            <div class="pedestal-divider divider-22k"></div>
+
+            <!-- Secondary 10 Gram Price -->
+            <div class="pedestal-secondary-price">
+              <div class="sec-unit-col">
+                <span class="sec-np">प्रति १० ग्राम</span>
+                <span class="sec-en">Per 10 Grams</span>
               </div>
-              <div class="adjustment-note" id="note22k">
-                <span class="note-icon">⚖️</span>
-                <span>२४ क्यारेटको ९२% (Formula: 24K × 92%)</span>
+              <div class="sec-amount-col">
+                <span class="sec-currency">रू</span>
+                <span class="sec-amount" id="price22k10g">--,--,---</span>
+              </div>
+            </div>
+
+            <!-- Footer Details -->
+            <div class="pedestal-footer">
+              <div class="prev-day-row">
+                <span class="prev-label">हिजोको दर / Yesterday:</span>
+                <span class="prev-value" id="yesterday22kTola">रू --,---</span>
+              </div>
+              <div class="formula-caption" id="note22k">
+                <span class="caption-bullet">◆</span>
+                <span>२४ क्यारेटको ९२% अनुसार गणना गरिएको</span>
               </div>
             </div>
           </article>
 
-          <!-- CARD 3: SILVER (असली चाँदी दर) -->
-          <article class="rate-card card-silver" id="cardSilver">
-            <div class="card-gold-accent accent-silver"></div>
-            <div class="card-header">
-              <div class="card-icon-box silver-icon">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+          <!-- CARD 3: FINE SILVER (असली चाँदी दर) -->
+          <article class="rate-pedestal pedestal-silver" id="cardSilver">
+            <div class="pedestal-halo halo-silver"></div>
+
+            <div class="pedestal-header">
+              <div class="metal-icon-wrapper icon-silver">
+                <!-- Bespoke Silver Ingot/Coin Vector -->
+                <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+                  <ellipse cx="16" cy="16" rx="11" ry="11" fill="url(#silverGradA)" stroke="#e2e8f0" stroke-width="1.2"/>
+                  <ellipse cx="16" cy="16" rx="8" ry="8" fill="url(#silverGradB)" stroke="#cbd5e1" stroke-width="0.8"/>
+                  <text x="16" y="18.5" font-family="'Outfit', sans-serif" font-size="6" font-weight="900" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">Ag</text>
+                  <defs>
+                    <linearGradient id="silverGradA" x1="5" y1="5" x2="27" y2="27" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ffffff"/>
+                      <stop offset="0.5" stop-color="#cbd5e1"/>
+                      <stop offset="1" stop-color="#64748b"/>
+                    </linearGradient>
+                    <linearGradient id="silverGradB" x1="8" y1="8" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#f8fafc"/>
+                      <stop offset="1" stop-color="#94a3b8"/>
+                    </linearGradient>
+                  </defs>
                 </svg>
               </div>
-              <div class="card-title-group">
-                <div class="karat-tag silver-tag">FINE SILVER (99.9% PURE)</div>
-                <h3 class="card-nepali-title">असली चाँदी दर (सिल्भर)</h3>
-                <span class="card-eng-subtitle">Pure Silver Ornaments & Bullion</span>
+
+              <div class="metal-title-wrap">
+                <span class="purity-badge purity-silver">FINE SILVER • 99.9%</span>
+                <h3 class="pedestal-nepali-title">असली चाँदी दर</h3>
+                <span class="pedestal-eng-subtitle">Pure Silver Bullion</span>
               </div>
-              <div class="rate-trend-badge" id="trendSilver">
-                <span class="trend-arrow">▲</span>
+
+              <div class="pedestal-trend" id="trendSilver">
+                <span class="trend-icon">
+                  <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor">
+                    <path d="M6 2L10 7H2L6 2Z"/>
+                  </svg>
+                </span>
                 <span class="trend-text">+ रू १५</span>
               </div>
             </div>
 
-            <div class="card-price-primary">
-              <div class="price-unit-label">
-                <span class="unit-main">प्रति १ तोला दर</span>
-                <span class="unit-sub">Rate Per 1 Tola (11.66g)</span>
+            <!-- Primary 1 Tola Price -->
+            <div class="pedestal-primary-price">
+              <div class="unit-banner">
+                <span class="unit-np">प्रति १ तोला दर</span>
+                <span class="unit-en">Per 1 Tola (11.66g)</span>
               </div>
-              <div class="price-value-container">
-                <span class="currency-symbol">रू</span>
-                <span class="price-amount" id="priceSilverTola">-,---</span>
-              </div>
-            </div>
-
-            <div class="card-price-secondary">
-              <div class="price-unit-label">
-                <span class="unit-main">प्रति १० ग्राम दर</span>
-                <span class="unit-sub">Per 10 Grams</span>
-              </div>
-              <div class="price-value-secondary">
-                <span class="currency-symbol-sm">रू</span>
-                <span class="price-amount-sm" id="priceSilver10g">-,---</span>
+              <div class="amount-line">
+                <span class="npr-currency">रू</span>
+                <span class="npr-amount amount-silver" id="priceSilverTola">-,---</span>
               </div>
             </div>
 
-            <div class="card-footer-meta">
-              <div class="yesterday-compare">
-                <span class="meta-label">हिजोको दर (Yesterday):</span>
-                <span class="meta-val" id="yesterdaySilverTola">रू --,---</span>
+            <div class="pedestal-divider divider-silver"></div>
+
+            <!-- Secondary 10 Gram Price -->
+            <div class="pedestal-secondary-price">
+              <div class="sec-unit-col">
+                <span class="sec-np">प्रति १० ग्राम</span>
+                <span class="sec-en">Per 10 Grams</span>
               </div>
-              <div class="adjustment-note" id="noteSilver">
-                <span class="note-icon">✨</span>
-                <span>+रू १५ प्रति तोला थप गरिएको</span>
+              <div class="sec-amount-col">
+                <span class="sec-currency">रू</span>
+                <span class="sec-amount" id="priceSilver10g">-,---</span>
+              </div>
+            </div>
+
+            <!-- Footer Details -->
+            <div class="pedestal-footer">
+              <div class="prev-day-row">
+                <span class="prev-label">हिजोको दर / Yesterday:</span>
+                <span class="prev-value" id="yesterdaySilverTola">रू --,---</span>
+              </div>
+              <div class="formula-caption" id="noteSilver">
+                <span class="caption-bullet">◆</span>
+                <span>+रू १५ प्रति तोला बजार समायोजन</span>
               </div>
             </div>
           </article>
@@ -255,16 +334,12 @@
         </div>
       </section>
 
-      <!-- RIGHT COLUMN: SHOWCASE CAROUSEL & STORE HIGHLIGHTS -->
-      <aside class="showcase-section" aria-label="Jewellery Showcase">
-        <div class="showcase-card">
-          <div class="showcase-header">
-            <span class="showcase-badge">💎 विशेष संकलन / FEATURED</span>
-            <h4 class="showcase-title" id="showcaseTitle">परम्परागत ब्राइडल रानीहार</h4>
-          </div>
-
+      <!-- RIGHT: REFINED GALLERY SHOWCASE & OFFICIAL STORE LOCATION -->
+      <aside class="showcase-section" aria-label="Featured Jewellery Collection & Showroom Details">
+        <div class="showcase-panel">
+          
+          <!-- Rotating Slideshow Viewer -->
           <div class="showcase-viewer">
-            <!-- Rotating Showcase Images -->
             <div class="slides-container" id="slidesContainer">
               <div class="slide active" data-title="परम्परागत ब्राइडल रानीहार" data-subtitle="Royal Traditional Bridal Collection">
                 <img src="assets/necklace.jpg" alt="Bridal Gold Necklace Set" loading="eager">
@@ -291,169 +366,171 @@
             </div>
           </div>
 
-          <!-- Store Location & Contact Card (Visit Our Store) -->
-          <div class="store-location-card">
-            <div class="location-card-header">
-              <span class="loc-icon">📍</span>
-              <div class="loc-header-text">
-                <span class="loc-badge">VISIT OUR STORE</span>
-                <strong class="loc-store-name">Shree Shubha Laxmi Jewellery</strong>
+          <!-- Official Store Location & Contact Placard -->
+          <div class="store-placard">
+            <div class="placard-top">
+              <div class="placard-icon-box">
+                <!-- Location Pin Vector -->
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="placard-title-group">
+                <span class="placard-kicker">VISIT OUR STORE</span>
+                <h4 class="placard-store-name">Shree Shubha Laxmi Jewellery</h4>
               </div>
             </div>
-            <div class="loc-details">
-              <p class="loc-address">Thakurbari Road, Ramjanaki Path, Biratnagar</p>
-              <p class="loc-province">Koshi Province, Nepal</p>
-              <div class="loc-contact-row">
-                <span class="loc-contact-label">📞 Direct Contact:</span>
-                <a href="tel:+9779807313993" class="loc-contact-phone">+977 9807313993</a>
+
+            <div class="placard-body">
+              <p class="placard-address">Thakurbari Road, Ramjanaki Path, Biratnagar</p>
+              <p class="placard-province">Koshi Province, Nepal</p>
+              
+              <div class="placard-contact-line">
+                <span class="contact-icon">
+                  <!-- Phone Receiver Vector -->
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </span>
+                <span class="contact-label">Direct Contact:</span>
+                <strong class="contact-number">+977 9807313993</strong>
               </div>
             </div>
           </div>
 
-          <!-- Bottom Trust Badges -->
-          <div class="trust-features-grid">
-            <div class="feature-item">
-              <span class="feature-icon">🛡️</span>
-              <div class="feature-text">
-                <strong>१००% हलमार्क</strong>
-                <span>Purity Guaranteed</span>
+          <!-- Hallmark & Craftsmanship Vector Badges -->
+          <div class="trust-vector-grid">
+            <div class="trust-badge">
+              <span class="trust-svg-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              </span>
+              <div class="trust-label-group">
+                <strong class="trust-main">१००% हलमार्क</strong>
+                <span class="trust-sub">Certified Purity</span>
               </div>
             </div>
-            <div class="feature-item">
-              <span class="feature-icon">💎</span>
-              <div class="feature-text">
-                <strong>विशेष अर्डर</strong>
-                <span>Custom Designs</span>
+
+            <div class="trust-badge">
+              <span class="trust-svg-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </span>
+              <div class="trust-label-group">
+                <strong class="trust-main">विशेष अर्डर</strong>
+                <span class="trust-sub">Custom Ornaments</span>
               </div>
             </div>
-            <div class="feature-item">
-              <span class="feature-icon">🔄</span>
-              <div class="feature-text">
-                <strong>सट्टापट्टा सुविधा</strong>
-                <span>Easy Exchange</span>
+
+            <div class="trust-badge">
+              <span class="trust-svg-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                  <path d="M3 3v5h5"/>
+                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+                  <path d="M16 16h5v5"/>
+                </svg>
+              </span>
+              <div class="trust-label-group">
+                <strong class="trust-main">सट्टापट्टा सुविधा</strong>
+                <span class="trust-sub">Fair Exchange</span>
               </div>
             </div>
           </div>
+
         </div>
       </aside>
     </main>
 
-    <!-- BOTTOM MOVABLE MARQUEE TICKER (USER REQUIREMENT) -->
-    <footer class="tv-footer-ticker" aria-label="Store News and Contact Details">
+    <!-- ====================================================================
+         BOTTOM MOVABLE TICKER (CLEAN LUXURY TYPOGRAPHY - NO EMOJIS)
+         ==================================================================== -->
+    <footer class="tv-footer-ticker" aria-label="Official Store Ticker">
       <div class="ticker-prefix">
         <span class="ticker-badge">सूचना / NOTICE</span>
       </div>
       
       <div class="ticker-track-wrap">
         <div class="ticker-track" id="tickerTrack">
-          <!-- Marquee item repeated twice for seamless infinite scroll -->
+          <!-- Marquee element repeated twice for seamless infinite scroll -->
           <div class="ticker-content" id="tickerContentA">
-            <span class="t-highlight">✨ श्री शुभ लक्ष्मी ज्वेलरी (Shree Shubha Laxmi Jewellery) ✨</span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">📍 Visit Our Store:</strong> <span class="contact-address" id="tickerAddress">Thakurbari Road, Ramjanaki Path, Biratnagar, Koshi Province, Nepal</span></span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">📞 Direct Contact:</strong> <span class="contact-phone" id="tickerPhone">+977 9807313993</span></span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">🌟 आजको दरभाउ:</strong> २४ क्यारेट छापावाल सुन, २२ क्यारेट गहना सुन तथा असली चाँदीको ताजा बजार दर FENEGOSIDA अनुसार अपडेट गरिएको छ।</span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">👑 विशेष सेवा:</strong> शुभ विवाह, चाडपर्व तथा विशेष अवसरका लागि मनपर्ने डिजाइनका गहनाहरु निर्माण गरिन्छ।</span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">💎 विश्वासको धरोहर:</strong> १००% शुद्धता, उच्च गुणस्तर र भरपर्दो ग्राहक सेवा हाम्रो प्रतिबद्धता!</span>
+            <span class="t-highlight">श्री शुभ लक्ष्मी ज्वेलरी • SHREE SHUBHA LAXMI JEWELLERY</span>
+            <span class="t-sep">◆</span>
+            <span class="t-item"><strong class="t-tag">स्थान / Location:</strong> <span class="contact-address" id="tickerAddress">Thakurbari Road, Ramjanaki Path, Biratnagar, Koshi Province, Nepal</span></span>
+            <span class="t-sep">◆</span>
+            <span class="t-item"><strong class="t-tag">सम्पर्क / Direct Contact:</strong> <span class="contact-phone" id="tickerPhone">+977 9807313993</span></span>
+            <span class="t-sep">◆</span>
+            <span class="t-item"><strong class="t-tag">ताजा बजार दर:</strong> २४ क्यारेट छापावाल सुन, २२ क्यारेट गहना सुन तथा चाँदीको दर FENEGOSIDA अनुसार निरन्तर अपडेट भइरहेको छ।</span>
+            <span class="t-sep">◆</span>
+            <span class="t-item"><strong class="t-tag">गुणस्तर प्रतिबद्धता:</strong> १००% हलमार्क छाप भएका गहनाहरु, शुद्धता र निष्पक्ष कारोबारको ग्यारेन्टी।</span>
           </div>
 
           <div class="ticker-content" id="tickerContentB" aria-hidden="true">
-            <span class="t-highlight">✨ श्री शुभ लक्ष्मी ज्वेलरी (Shree Shubha Laxmi Jewellery) ✨</span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">📍 Visit Our Store:</strong> <span class="contact-address" id="tickerAddress2">Thakurbari Road, Ramjanaki Path, Biratnagar, Koshi Province, Nepal</span></span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">📞 Direct Contact:</strong> <span class="contact-phone" id="tickerPhone2">+977 9807313993</span></span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">🌟 आजको दरभाउ:</strong> २४ क्यारेट छापावाल सुन, २२ क्यारेट गहना सुन तथा असली चाँदीको ताजा बजार दर FENEGOSIDA अनुसार अपडेट गरिएको छ।</span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">👑 विशेष सेवा:</strong> शुभ विवाह, चाडपर्व तथा विशेष अवसरका लागि मनपर्ने डिजाइनका गहनाहरु निर्माण गरिन्छ।</span>
-            <span class="t-sep">✦</span>
-            <span class="t-item"><strong class="t-tag">💎 विश्वासको धरोहर:</strong> १००% शुद्धता, उच्च गुणस्तर र भरपर्दो ग्राहक सेवा हाम्रो प्रतिबद्धता!</span>
+            <span class="t-highlight">श्री शुभ लक्ष्मी ज्वेलरी • SHREE SHUBHA LAXMI JEWELLERY</span>
+            <span class="t-sep">◆</span>
+            <span class="t-item"><strong class="t-tag">स्थान / Location:</strong> <span class="contact-address" id="tickerAddress2">Thakurbari Road, Ramjanaki Path, Biratnagar, Koshi Province, Nepal</span></span>
+            <span class="t-sep">◆</span>
+            <span class="t-item"><strong class="t-tag">सम्पर्क / Direct Contact:</strong> <span class="contact-phone" id="tickerPhone2">+977 9807313993</span></span>
+            <span class="t-sep">◆</span>
+            <span class="t-item"><strong class="t-tag">ताजा बजार दर:</strong> २४ क्यारेट छापावाल सुन, २२ क्यारेट गहना सुन तथा चाँदीको दर FENEGOSIDA अनुसार निरन्तर अपडेट भइरहेको छ।</span>
+            <span class="t-sep">◆</span>
+            <span class="t-item"><strong class="t-tag">गुणस्तर प्रतिबद्धता:</strong> १००% हलमार्क छाप भएका गहनाहरु, शुद्धता र निष्पक्ष कारोबारको ग्यारेन्टी।</span>
           </div>
         </div>
       </div>
     </footer>
   </div>
 
-  <!-- CONFIGURATION / SETTINGS MODAL (Press 'S' or click gear) -->
-  <div class="settings-modal" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
+  <!-- Toast Notification -->
+  <div class="tv-toast" id="tvToast" role="alert" aria-live="polite"></div>
+
+  <!-- Store Settings Modal (Safely Hidden from public view; Triggerable only via secret key combination Ctrl+Shift+S) -->
+  <div class="settings-modal" id="settingsModal" role="dialog" aria-modal="true" style="display: none;">
     <div class="settings-backdrop" id="settingsBackdrop"></div>
     <div class="settings-box">
       <div class="settings-modal-header">
-        <h3 id="settingsModalTitle">⚙️ स्टोर सेटिङ्स / Store Settings</h3>
-        <button class="modal-close-btn" id="btnCloseSettings" aria-label="Close Settings">&times;</button>
+        <h3>स्टोर सेटिङ्स (Admin Settings)</h3>
+        <button class="modal-close-btn" id="btnCloseSettings">&times;</button>
       </div>
-
       <div class="settings-form">
         <div class="form-row">
-          <label for="cfgPhone">📞 फोन / सम्पर्क नम्बर (Direct Contact):</label>
-          <input type="text" id="cfgPhone" placeholder="+977 9807313993">
+          <label for="cfgPhone">सम्पर्क नम्बर (Contact):</label>
+          <input type="text" id="cfgPhone" value="+977 9807313993">
         </div>
-
         <div class="form-row">
-          <label for="cfgAddress">📍 पसलको ठेगाना (Store Location):</label>
-          <input type="text" id="cfgAddress" placeholder="Thakurbari Road, Ramjanaki Path, Biratnagar, Koshi Province, Nepal">
+          <label for="cfgAddress">पसलको ठेगाना (Location):</label>
+          <input type="text" id="cfgAddress" value="Thakurbari Road, Ramjanaki Path, Biratnagar, Koshi Province, Nepal">
         </div>
-
-        <div class="form-row">
-          <label for="cfgCustomNotice">📢 मुभिङ सूचना / Ticker Notice Message:</label>
-          <textarea id="cfgCustomNotice" rows="2" placeholder="श्री शुभ लक्ष्मी ज्वेलरी, विराटनगरमा १००% हलमार्क प्रमाणित सुन तथा चाँदीका गहनाहरु उपलब्ध छन्।"></textarea>
-        </div>
-
-        <div class="form-group-divider">दर समायोजन नियमहरु (Rate Rules)</div>
-
         <div class="form-grid-2">
           <div class="form-row">
-            <label for="cfgOffset24k">२४ क्यारेट सुन समायोजन (Rs):</label>
+            <label for="cfgOffset24k">२४ क्यारेट थप (Rs):</label>
             <input type="number" id="cfgOffset24k" value="500">
-            <small class="field-hint">User rule: +500 tola</small>
           </div>
           <div class="form-row">
-            <label for="cfgMultiplier22k">२२ क्यारेट प्रतिशत (%):</label>
-            <input type="number" id="cfgMultiplier22k" value="92" step="0.1">
-            <small class="field-hint">User rule: 24K × 92%</small>
+            <label for="cfgMultiplier22k">२२ क्यारेट (%):</label>
+            <input type="number" id="cfgMultiplier22k" value="92">
           </div>
         </div>
-
         <div class="form-grid-2">
           <div class="form-row">
-            <label for="cfgOffsetSilver">चाँदी समायोजन (Rs):</label>
+            <label for="cfgOffsetSilver">चाँदी थप (Rs):</label>
             <input type="number" id="cfgOffsetSilver" value="15">
-            <small class="field-hint">User rule: +15 tola</small>
           </div>
           <div class="form-row">
-            <label for="cfgRefreshSeconds">अपडेट दर (सेकेन्ड / Refresh Rate):</label>
-            <select id="cfgRefreshSeconds">
-              <option value="30">३० सेकेन्ड (30s)</option>
-              <option value="60" selected>१ मिनेट (60s - सिफारिस)</option>
-              <option value="120">२ मिनेट (120s)</option>
-              <option value="300">५ मिनेट (300s)</option>
-            </select>
+            <label for="cfgRefreshSeconds">अपडेट समय (सेकेन्ड):</label>
+            <input type="number" id="cfgRefreshSeconds" value="60">
           </div>
         </div>
-
-        <div class="form-row checkbox-row">
-          <label class="toggle-switch">
-            <input type="checkbox" id="cfgNepaliDigits">
-            <span class="toggle-slider"></span>
-          </label>
-          <span class="toggle-label">नेपाली अंकमा दर देखाउनुहोस् (Display in Devanagari numerals: २,९०,७००)</span>
-        </div>
-
         <div class="settings-actions">
-          <button type="button" class="btn-secondary" id="btnResetSettings">पूर्वनिर्धारित (Reset Default)</button>
-          <button type="button" class="btn-primary" id="btnSaveSettings">सेभ गर्नुहोस् (Save Changes)</button>
+          <button type="button" class="btn-primary" id="btnSaveSettings">सेभ गर्नुहोस्</button>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- OFFLINE / TOAST NOTIFICATION -->
-  <div class="tv-toast" id="tvToast" role="alert" aria-live="polite"></div>
 
   <script src="app.js"></script>
 </body>
