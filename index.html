@@ -19,12 +19,13 @@
 /* ==========================================================================
    SHREE SHUBHA LAXMI JEWELLERY - UNIVERSAL ANDROID TV COMPATIBLE CSS
    Compatible with all Android TV browsers (Chromium 60+, Silk, WebKit, TV WebViews)
+   Row Format Rate Display & Clean Executive Navbar
    ========================================================================== */
 
 :root {
   --bg-deep: #05070d;
   --bg-surface: #0a0f1d;
-  --bg-pedestal: #0d1527;
+  --bg-row: #0d1527;
   
   --gold-primary: #d4af37;
   --gold-bright: #fde047;
@@ -121,7 +122,7 @@ html, body {
 }
 
 /* ==========================================================================
-   HEADER SECTION
+   HEADER SECTION: EXECUTIVE CLEAN NAVBAR (NO LIVE PILL, NO COUNTER)
    ========================================================================== */
 .tv-header {
   width: 100%;
@@ -248,8 +249,8 @@ html, body {
   letter-spacing: 0.5px;
 }
 
-/* Header Live pill */
-.header-center-info {
+/* Header Date/Time & Controls */
+.header-right-group {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -258,85 +259,6 @@ html, body {
   align-items: center;
 }
 
-.live-pill {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  background: rgba(34, 197, 94, 0.12);
-  border: 1px solid rgba(34, 197, 94, 0.35);
-  padding: 6px 14px;
-  border-radius: 50px;
-  margin-right: 12px;
-}
-
-.pulse-beacon {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 10px #22c55e;
-  margin-right: 8px;
-  animation: pulseLive 2s infinite;
-}
-
-@keyframes pulseLive {
-  0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.15); opacity: 1; }
-  100% { transform: scale(0.95); opacity: 0.8; }
-}
-
-.live-text {
-  font-size: 12px;
-  font-size: clamp(0.68rem, 1.05vh, 0.85rem);
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #4ade80;
-}
-
-.refresh-countdown {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.progress-ring {
-  transform: rotate(-90deg);
-}
-
-.ring-bg {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 3;
-}
-
-.ring-fill {
-  fill: none;
-  stroke: #d4af37;
-  stroke-width: 3;
-  stroke-linecap: round;
-  transition: stroke-dasharray 1s linear;
-}
-
-.countdown-sec {
-  position: absolute;
-  font-size: 10px;
-  font-weight: 700;
-  color: #94a3b8;
-}
-
-/* Header Date/Time */
 .datetime-block {
   text-align: right;
   display: -webkit-box;
@@ -396,7 +318,7 @@ html, body {
   -webkit-box-align: center;
   -webkit-align-items: center;
   align-items: center;
-  margin-left: 14px;
+  margin-left: 16px;
 }
 
 .icon-btn {
@@ -426,7 +348,7 @@ html, body {
 }
 
 /* ==========================================================================
-   MAIN VIEWPORT: 16:9 RECTANGLE LAYOUT (NO COLLAPSING ON TV!)
+   MAIN VIEWPORT: 16:9 RECTANGLE LAYOUT
    ========================================================================== */
 .tv-main {
   width: 100%;
@@ -449,10 +371,10 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   LEFT: RATES SECTION (65% WIDE RECTANGLE)
+   LEFT: RATES SECTION (66% WIDE RECTANGLE - ROW FORMAT)
    -------------------------------------------------------------------------- */
 .rates-section {
-  width: 65%;
+  width: 66%;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -464,32 +386,9 @@ html, body {
   min-height: 0;
 }
 
-.rates-board-container {
+.rates-rows-container {
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-}
-
-/* RATE PEDESTALS (EACH OCCUPIES ~31.8% OF THE 65% CONTAINER) */
-.rate-pedestal {
-  width: 31.8%;
-  height: 100%;
-  position: relative;
-  background: #0d1527;
-  background: radial-gradient(ellipse at 50% 0%, rgba(24, 34, 62, 0.8) 0%, rgba(10, 15, 30, 0.95) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 18px;
-  padding: 16px 14px;
-  padding: clamp(12px, 1.8vh, 22px) clamp(10px, 1.2vw, 18px);
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -500,41 +399,72 @@ html, body {
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
-  overflow: hidden;
 }
 
-.pedestal-halo {
-  position: absolute;
-  top: -30px;
-  left: 20%;
-  right: 20%;
-  height: 70px;
-  background: radial-gradient(circle, rgba(234, 179, 8, 0.25) 0%, transparent 70%);
-  pointer-events: none;
-  filter: blur(20px);
-}
-
-.halo-22k {
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
-}
-
-.halo-silver {
-  background: radial-gradient(circle, rgba(203, 213, 225, 0.2) 0%, transparent 70%);
-}
-
-/* Header inside card */
-.pedestal-header {
+/* HORIZONTAL RATE ROW */
+.rate-row {
+  width: 100%;
+  height: 31.5%;
+  background: #0d1527;
+  background: linear-gradient(90deg, rgba(16, 25, 48, 0.95) 0%, rgba(10, 15, 30, 0.98) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 16px;
+  padding: 12px 22px;
+  padding: clamp(10px, 1.4vh, 18px) clamp(14px, 1.6vw, 24px);
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
 }
 
-.metal-icon-wrapper {
+.row-24k {
+  border-left: 5px solid #d4af37;
+}
+
+.row-22k {
+  border-left: 5px solid #f59e0b;
+}
+
+.row-silver {
+  border-left: 5px solid #cbd5e1;
+}
+
+/* Row Columns */
+.row-col {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+/* Col 1: Metal Identification */
+.col-metal {
+  width: 32%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.metal-icon-box {
   width: 44px;
   height: 44px;
   width: clamp(38px, 5vh, 48px);
@@ -550,7 +480,7 @@ html, body {
   -webkit-justify-content: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 .icon-gold-24k {
@@ -568,11 +498,14 @@ html, body {
   border: 1px solid rgba(203, 213, 225, 0.35);
 }
 
-.metal-title-wrap {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  flex: 1;
-  min-width: 0;
+.metal-details {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
 }
 
 .purity-badge {
@@ -584,7 +517,7 @@ html, body {
   padding: 2px 6px;
   border-radius: 4px;
   margin-bottom: 2px;
-  white-space: nowrap;
+  width: fit-content;
 }
 
 .purity-24k {
@@ -605,24 +538,124 @@ html, body {
   border: 1px solid rgba(203, 213, 225, 0.3);
 }
 
-.pedestal-nepali-title {
+.metal-title {
   font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 18px;
-  font-size: clamp(1rem, 1.8vh, 1.4rem);
+  font-size: 20px;
+  font-size: clamp(1.1rem, 2vh, 1.55rem);
   font-weight: 800;
-  line-height: 1.15;
   color: #ffffff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.15;
 }
 
-.pedestal-eng-subtitle {
-  display: block;
-  font-size: 10px;
-  font-size: clamp(0.58rem, 0.85vh, 0.72rem);
+.metal-note {
+  font-family: 'Mukta', sans-serif;
+  font-size: 11px;
+  font-size: clamp(0.6rem, 0.92vh, 0.76rem);
+  color: #fde047;
+  margin-top: 2px;
+}
+
+.caption-bullet {
+  color: #d4af37;
+  margin-right: 4px;
+}
+
+/* Col 2: 1 Tola Price */
+.col-tola {
+  width: 27%;
+  text-align: right;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* Col 3: 10 Gram Price */
+.col-gram {
+  width: 22%;
+  text-align: right;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* Col 4: Trend & Yesterday */
+.col-trend {
+  width: 17%;
+  text-align: right;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+.col-caption {
+  font-family: 'Mukta', sans-serif;
+  font-size: 11px;
+  font-size: clamp(0.62rem, 0.95vh, 0.8rem);
   color: #94a3b8;
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.price-val-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+}
+
+.price-cur {
+  font-family: 'Mukta', sans-serif;
+  font-size: 20px;
+  font-size: clamp(1rem, 1.8vh, 1.5rem);
+  font-weight: 800;
+  color: #fde047;
+  margin-right: 4px;
+}
+
+.price-num {
+  font-size: 32px;
+  font-size: clamp(1.8rem, 3.8vh, 3rem);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.num-24k {
+  color: #fde047;
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #eab308 60%, #ca8a04 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.num-22k {
+  color: #f59e0b;
+  background: linear-gradient(135deg, #ffffff 0%, #fde68a 25%, #f59e0b 60%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.num-silver {
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 25%, #cbd5e1 60%, #64748b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.price-cur-sm {
+  font-family: 'Mukta', sans-serif;
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 700;
+  margin-right: 3px;
+}
+
+.price-num-sm {
+  font-size: 20px;
+  font-size: clamp(1.1rem, 2.2vh, 1.7rem);
+  font-weight: 800;
+  color: #ffffff;
 }
 
 .pedestal-trend {
@@ -632,16 +665,15 @@ html, body {
   -webkit-box-align: center;
   -webkit-align-items: center;
   align-items: center;
-  font-size: 10px;
-  font-size: clamp(0.6rem, 0.95vh, 0.8rem);
+  font-size: 11px;
+  font-size: clamp(0.65rem, 1vh, 0.85rem);
   font-weight: 700;
-  padding: 3px 6px;
+  padding: 3px 8px;
   border-radius: 16px;
   background: rgba(34, 197, 94, 0.14);
   color: #4ade80;
   border: 1px solid rgba(34, 197, 94, 0.3);
   white-space: nowrap;
-  margin-left: 4px;
 }
 
 .pedestal-trend.trend-down {
@@ -652,235 +684,21 @@ html, body {
 
 .trend-icon {
   display: inline-block;
-  margin-right: 3px;
-}
-
-/* Primary Tola Price */
-.pedestal-primary-price {
-  width: 100%;
-  margin: 10px 0;
-  margin: clamp(8px, 1.5vh, 16px) 0;
-}
-
-.unit-banner {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-align: baseline;
-  -webkit-align-items: baseline;
-  align-items: baseline;
-  margin-bottom: 2px;
-}
-
-.unit-np {
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 14px;
-  font-size: clamp(0.78rem, 1.25vh, 1rem);
-  font-weight: 700;
-  color: #94a3b8;
-}
-
-.unit-en {
-  font-size: 10px;
-  font-size: clamp(0.55rem, 0.8vh, 0.7rem);
-  color: #64748b;
-}
-
-.amount-line {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: baseline;
-  -webkit-align-items: baseline;
-  align-items: baseline;
-}
-
-.npr-currency {
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 24px;
-  font-size: clamp(1.2rem, 2.2vh, 1.8rem);
-  font-weight: 800;
-  color: #fde047;
-  margin-right: 5px;
-}
-
-.npr-amount {
-  font-size: 32px;
-  font-size: clamp(1.8rem, 4.2vh, 3.2rem);
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  line-height: 1;
-}
-
-.amount-24k {
-  color: #fde047;
-  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #eab308 60%, #ca8a04 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(234, 179, 8, 0.35));
-}
-
-.amount-22k {
-  color: #f59e0b;
-  background: linear-gradient(135deg, #ffffff 0%, #fde68a 25%, #f59e0b 60%, #b45309 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.35));
-}
-
-.amount-silver {
-  color: #cbd5e1;
-  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 25%, #cbd5e1 60%, #64748b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(203, 213, 225, 0.35));
-}
-
-/* Hairline dividers */
-.pedestal-divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(234, 179, 8, 0.4) 50%, transparent 100%);
-  margin: 8px 0;
-}
-
-.divider-22k {
-  background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.4) 50%, transparent 100%);
-}
-
-.divider-silver {
-  background: linear-gradient(90deg, transparent 0%, rgba(203, 213, 225, 0.35) 50%, transparent 100%);
-}
-
-/* Secondary 10 Grams Price */
-.pedestal-secondary-price {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  padding: 0 2px;
-}
-
-.sec-unit-col {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-
-.sec-np {
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 13px;
-  font-size: clamp(0.7rem, 1.1vh, 0.9rem);
-  font-weight: 700;
-  color: #94a3b8;
-}
-
-.sec-en {
-  font-size: 9px;
-  font-size: clamp(0.52rem, 0.75vh, 0.65rem);
-  color: #64748b;
-}
-
-.sec-amount-col {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: baseline;
-  -webkit-align-items: baseline;
-  align-items: baseline;
-}
-
-.sec-currency {
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: #94a3b8;
-  margin-right: 3px;
-}
-
-.sec-amount {
-  font-size: 18px;
-  font-size: clamp(1rem, 2vh, 1.55rem);
-  font-weight: 800;
-  color: #ffffff;
-}
-
-/* Pedestal Footer */
-.pedestal-footer {
-  width: 100%;
-  margin-top: 8px;
-  padding-top: 6px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-
-.prev-day-row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  font-size: 10px;
-  font-size: clamp(0.6rem, 0.92vh, 0.76rem);
-}
-
-.prev-label {
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  color: #64748b;
-}
-
-.prev-value {
-  font-weight: 700;
-  color: #cbd5e1;
-}
-
-.formula-caption {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 10px;
-  font-size: clamp(0.58rem, 0.85vh, 0.72rem);
-  color: #fde047;
-  margin-top: 3px;
-}
-
-.caption-bullet {
-  color: #d4af37;
   margin-right: 4px;
 }
 
+.prev-rate-txt {
+  font-size: 11px;
+  font-size: clamp(0.6rem, 0.9vh, 0.76rem);
+  color: #cbd5e1;
+  margin-top: 4px;
+}
+
 /* --------------------------------------------------------------------------
-   RIGHT: SHOWCASE & LOCATION (33% WIDE RECTANGLE)
+   RIGHT: SHOWCASE & LOCATION (32% WIDE RECTANGLE)
    -------------------------------------------------------------------------- */
 .showcase-section {
-  width: 33%;
+  width: 32%;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1504,12 +1322,19 @@ html, body {
   .rates-section, .showcase-section {
     width: 100%;
   }
-  .rates-board-container {
+  .rates-rows-container {
     flex-direction: column;
   }
-  .rate-pedestal {
+  .rate-row {
     width: 100%;
     margin-bottom: 12px;
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .col-metal, .col-tola, .col-gram, .col-trend {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 6px;
   }
   .showcase-viewer {
     height: 240px;
@@ -1526,7 +1351,7 @@ html, body {
 
   <div class="tv-container" id="tvContainer">
     <!-- ====================================================================
-         HEADER SECTION (PROMINENT LOGO, ROYAL BRANDING & LIVE CLOCK)
+         HEADER SECTION: EXECUTIVE CLEAN NAVBAR (NO LIVE PILL, NO COUNTER)
          ==================================================================== -->
     <header class="tv-header">
       <div class="brand-block">
@@ -1544,61 +1369,47 @@ html, body {
         </div>
       </div>
 
-      <div class="header-center-info">
-        <div class="live-pill">
-          <span class="pulse-beacon"></span>
-          <span class="live-text">LIVE MARKET RATES</span>
+      <!-- Right Group: Live Clock & Quick Action Buttons -->
+      <div class="header-right-group">
+        <div class="datetime-block">
+          <div class="time-display" id="timeDisplay">--:--:-- --</div>
+          <div class="date-row">
+            <span class="nepali-date" id="nepaliDateDisplay">लोड हुँदैछ...</span>
+            <span class="date-separator">/</span>
+            <span class="english-date" id="englishDateDisplay">Loading date...</span>
+          </div>
         </div>
-        <div class="refresh-countdown" id="refreshContainer" title="Click to refresh">
-          <svg class="progress-ring" width="28" height="28" viewBox="0 0 36 36">
-            <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-            <path class="ring-fill" id="countdownCircle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-          </svg>
-          <span class="countdown-sec" id="countdownText">60s</span>
-        </div>
-      </div>
 
-      <div class="datetime-block">
-        <div class="time-display" id="timeDisplay">--:--:-- --</div>
-        <div class="date-row">
-          <span class="nepali-date" id="nepaliDateDisplay">लोड हुँदैछ...</span>
-          <span class="date-separator">/</span>
-          <span class="english-date" id="englishDateDisplay">Loading date...</span>
+        <div class="header-actions">
+          <button class="icon-btn" id="btnRefresh" title="Refresh Rates Now" aria-label="Refresh Rates">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+              <path d="M3 3v5h5"/>
+              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+              <path d="M16 16h5v5"/>
+            </svg>
+          </button>
+          <button class="icon-btn" id="btnFullscreen" title="Toggle TV Fullscreen (Press F)" aria-label="Fullscreen">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+          </button>
         </div>
-      </div>
-
-      <!-- Quick Action: Fullscreen Only (Settings is safely hidden from public) -->
-      <div class="header-actions">
-        <button class="icon-btn" id="btnRefresh" title="Refresh Rates Now" aria-label="Refresh Rates">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-            <path d="M3 3v5h5"/>
-            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
-            <path d="M16 16h5v5"/>
-          </svg>
-        </button>
-        <button class="icon-btn" id="btnFullscreen" title="Toggle TV Fullscreen (Press F)" aria-label="Fullscreen">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-          </svg>
-        </button>
       </div>
     </header>
 
     <!-- ====================================================================
-         MAIN BODY CONTENT (FLUID LUXURY RATES + REFINED SHOWCASE)
+         MAIN BODY CONTENT (ROW FORMAT RATES + REFINED SHOWCASE)
          ==================================================================== -->
     <main class="tv-main">
-      <!-- LEFT: MASTER RATE BOARD (SEAMLESS 3-PEDESTAL ARCHITECTURE) -->
+      <!-- LEFT: MASTER RATE BOARD (HORIZONTAL ROW FORMAT) -->
       <section class="rates-section" aria-label="Today Gold and Silver Market Rates">
-        <div class="rates-board-container">
+        <div class="rates-rows-container">
           
-          <!-- CARD 1: 24K PURE GOLD (छापावाल सुन) -->
-          <article class="rate-pedestal pedestal-24k" id="cardGold24k">
-            <div class="pedestal-halo"></div>
-            
-            <div class="pedestal-header">
-              <div class="metal-icon-wrapper icon-gold-24k">
+          <!-- ROW 1: 24K PURE GOLD (छापावाल सुन) -->
+          <article class="rate-row row-24k" id="rowGold24k">
+            <div class="row-col col-metal">
+              <div class="metal-icon-box icon-gold-24k">
                 <!-- Bespoke Gold Ingot Bullion Vector -->
                 <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
                   <path d="M6 18L10 8H22L26 18H6Z" fill="url(#goldGradA)" stroke="#fef08a" stroke-width="1.2"/>
@@ -1619,12 +1430,36 @@ html, body {
                 </svg>
               </div>
 
-              <div class="metal-title-wrap">
+              <div class="metal-details">
                 <span class="purity-badge purity-24k">24K PURE GOLD • 99.9%</span>
-                <h3 class="pedestal-nepali-title">छापावाल सुन</h3>
-                <span class="pedestal-eng-subtitle">Fine Hallmark Bullion</span>
+                <h3 class="metal-title">छापावाल सुन</h3>
+                <div class="metal-note" id="note24k">
+                  <span class="caption-bullet">◆</span>
+                  <span>+रू ५०० प्रति तोला बजार समायोजन</span>
+                </div>
               </div>
+            </div>
 
+            <!-- Col 2: 1 Tola Price (Main Prominent Price) -->
+            <div class="row-col col-tola">
+              <span class="col-caption">प्रति १ तोला दर (11.66g)</span>
+              <div class="price-val-row">
+                <span class="price-cur">रू</span>
+                <span class="price-num num-24k" id="price24kTola">--,--,---</span>
+              </div>
+            </div>
+
+            <!-- Col 3: 10 Gram Price -->
+            <div class="row-col col-gram">
+              <span class="col-caption">प्रति १० ग्राम</span>
+              <div class="price-val-row">
+                <span class="price-cur-sm">रू</span>
+                <span class="price-num-sm" id="price24k10g">--,--,---</span>
+              </div>
+            </div>
+
+            <!-- Col 4: Trend & Yesterday -->
+            <div class="row-col col-trend">
               <div class="pedestal-trend" id="trend24k">
                 <span class="trend-icon">
                   <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor">
@@ -1633,54 +1468,14 @@ html, body {
                 </span>
                 <span class="trend-text">+ रू ५००</span>
               </div>
-            </div>
-
-            <!-- Primary 1 Tola Price (Large Majestic Fluid Flow) -->
-            <div class="pedestal-primary-price">
-              <div class="unit-banner">
-                <span class="unit-np">प्रति १ तोला दर</span>
-                <span class="unit-en">Per 1 Tola (11.66g)</span>
-              </div>
-              <div class="amount-line">
-                <span class="npr-currency">रू</span>
-                <span class="npr-amount amount-24k" id="price24kTola">--,--,---</span>
-              </div>
-            </div>
-
-            <!-- Elegant Hairline Divider -->
-            <div class="pedestal-divider"></div>
-
-            <!-- Secondary 10 Gram Price -->
-            <div class="pedestal-secondary-price">
-              <div class="sec-unit-col">
-                <span class="sec-np">प्रति १० ग्राम</span>
-                <span class="sec-en">Per 10 Grams</span>
-              </div>
-              <div class="sec-amount-col">
-                <span class="sec-currency">रू</span>
-                <span class="sec-amount" id="price24k10g">--,--,---</span>
-              </div>
-            </div>
-
-            <!-- Footer Details -->
-            <div class="pedestal-footer">
-              <div class="prev-day-row">
-                <span class="prev-label">हिजोको दर / Yesterday:</span>
-                <span class="prev-value" id="yesterday24kTola">रू --,---</span>
-              </div>
-              <div class="formula-caption" id="note24k">
-                <span class="caption-bullet">◆</span>
-                <span>+रू ५०० प्रति तोला बजार समायोजन</span>
-              </div>
+              <div class="prev-rate-txt">हिजो: <strong id="yesterday24kTola">रू --,---</strong></div>
             </div>
           </article>
 
-          <!-- CARD 2: 22K JEWELLERY GOLD (२२ क्यारेट गहना सुन) -->
-          <article class="rate-pedestal pedestal-22k" id="cardGold22k">
-            <div class="pedestal-halo halo-22k"></div>
-
-            <div class="pedestal-header">
-              <div class="metal-icon-wrapper icon-gold-22k">
+          <!-- ROW 2: 22K JEWELLERY GOLD (२२ क्यारेट गहना सुन) -->
+          <article class="rate-row row-22k" id="rowGold22k">
+            <div class="row-col col-metal">
+              <div class="metal-icon-box icon-gold-22k">
                 <!-- Bespoke Hallmark Crown Vector -->
                 <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
                   <path d="M5 23L7 11L12 16L16 8L20 16L25 11L27 23H5Z" fill="url(#crownGrad)" stroke="#fde68a" stroke-width="1.2" stroke-linejoin="round"/>
@@ -1698,12 +1493,36 @@ html, body {
                 </svg>
               </div>
 
-              <div class="metal-title-wrap">
+              <div class="metal-details">
                 <span class="purity-badge purity-22k">22K JEWELLERY • 91.6%</span>
-                <h3 class="pedestal-nepali-title">२२ क्यारेट गहना सुन</h3>
-                <span class="pedestal-eng-subtitle">Standard Hallmark Ornaments</span>
+                <h3 class="metal-title">२२ क्यारेट गहना सुन</h3>
+                <div class="metal-note" id="note22k">
+                  <span class="caption-bullet">◆</span>
+                  <span>२४ क्यारेटको ९२% अनुसार गणना</span>
+                </div>
               </div>
+            </div>
 
+            <!-- Col 2: 1 Tola Price -->
+            <div class="row-col col-tola">
+              <span class="col-caption">प्रति १ तोला दर (11.66g)</span>
+              <div class="price-val-row">
+                <span class="price-cur">रू</span>
+                <span class="price-num num-22k" id="price22kTola">--,--,---</span>
+              </div>
+            </div>
+
+            <!-- Col 3: 10 Gram Price -->
+            <div class="row-col col-gram">
+              <span class="col-caption">प्रति १० ग्राम</span>
+              <div class="price-val-row">
+                <span class="price-cur-sm">रू</span>
+                <span class="price-num-sm" id="price22k10g">--,--,---</span>
+              </div>
+            </div>
+
+            <!-- Col 4: Trend & Yesterday -->
+            <div class="row-col col-trend">
               <div class="pedestal-trend" id="trend22k">
                 <span class="trend-icon">
                   <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor">
@@ -1712,53 +1531,14 @@ html, body {
                 </span>
                 <span class="trend-text">+ रू ४६०</span>
               </div>
-            </div>
-
-            <!-- Primary 1 Tola Price -->
-            <div class="pedestal-primary-price">
-              <div class="unit-banner">
-                <span class="unit-np">प्रति १ तोला दर</span>
-                <span class="unit-en">Per 1 Tola (11.66g)</span>
-              </div>
-              <div class="amount-line">
-                <span class="npr-currency">रू</span>
-                <span class="npr-amount amount-22k" id="price22kTola">--,--,---</span>
-              </div>
-            </div>
-
-            <div class="pedestal-divider divider-22k"></div>
-
-            <!-- Secondary 10 Gram Price -->
-            <div class="pedestal-secondary-price">
-              <div class="sec-unit-col">
-                <span class="sec-np">प्रति १० ग्राम</span>
-                <span class="sec-en">Per 10 Grams</span>
-              </div>
-              <div class="sec-amount-col">
-                <span class="sec-currency">रू</span>
-                <span class="sec-amount" id="price22k10g">--,--,---</span>
-              </div>
-            </div>
-
-            <!-- Footer Details -->
-            <div class="pedestal-footer">
-              <div class="prev-day-row">
-                <span class="prev-label">हिजोको दर / Yesterday:</span>
-                <span class="prev-value" id="yesterday22kTola">रू --,---</span>
-              </div>
-              <div class="formula-caption" id="note22k">
-                <span class="caption-bullet">◆</span>
-                <span>२४ क्यारेटको ९२% अनुसार गणना गरिएको</span>
-              </div>
+              <div class="prev-rate-txt">हिजो: <strong id="yesterday22kTola">रू --,---</strong></div>
             </div>
           </article>
 
-          <!-- CARD 3: FINE SILVER (असली चाँदी दर) -->
-          <article class="rate-pedestal pedestal-silver" id="cardSilver">
-            <div class="pedestal-halo halo-silver"></div>
-
-            <div class="pedestal-header">
-              <div class="metal-icon-wrapper icon-silver">
+          <!-- ROW 3: FINE SILVER (असली चाँदी दर) -->
+          <article class="rate-row row-silver" id="rowSilver">
+            <div class="row-col col-metal">
+              <div class="metal-icon-box icon-silver">
                 <!-- Bespoke Silver Ingot/Coin Vector -->
                 <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
                   <ellipse cx="16" cy="16" rx="11" ry="11" fill="url(#silverGradA)" stroke="#e2e8f0" stroke-width="1.2"/>
@@ -1778,12 +1558,36 @@ html, body {
                 </svg>
               </div>
 
-              <div class="metal-title-wrap">
+              <div class="metal-details">
                 <span class="purity-badge purity-silver">FINE SILVER • 99.9%</span>
-                <h3 class="pedestal-nepali-title">असली चाँदी दर</h3>
-                <span class="pedestal-eng-subtitle">Pure Silver Bullion</span>
+                <h3 class="metal-title">असली चाँदी दर</h3>
+                <div class="metal-note" id="noteSilver">
+                  <span class="caption-bullet">◆</span>
+                  <span>+रू १५ प्रति तोला बजार समायोजन</span>
+                </div>
               </div>
+            </div>
 
+            <!-- Col 2: 1 Tola Price -->
+            <div class="row-col col-tola">
+              <span class="col-caption">प्रति १ तोला दर (11.66g)</span>
+              <div class="price-val-row">
+                <span class="price-cur">रू</span>
+                <span class="price-num num-silver" id="priceSilverTola">-,---</span>
+              </div>
+            </div>
+
+            <!-- Col 3: 10 Gram Price -->
+            <div class="row-col col-gram">
+              <span class="col-caption">प्रति १० ग्राम</span>
+              <div class="price-val-row">
+                <span class="price-cur-sm">रू</span>
+                <span class="price-num-sm" id="priceSilver10g">-,---</span>
+              </div>
+            </div>
+
+            <!-- Col 4: Trend & Yesterday -->
+            <div class="row-col col-trend">
               <div class="pedestal-trend" id="trendSilver">
                 <span class="trend-icon">
                   <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor">
@@ -1792,44 +1596,7 @@ html, body {
                 </span>
                 <span class="trend-text">+ रू १५</span>
               </div>
-            </div>
-
-            <!-- Primary 1 Tola Price -->
-            <div class="pedestal-primary-price">
-              <div class="unit-banner">
-                <span class="unit-np">प्रति १ तोला दर</span>
-                <span class="unit-en">Per 1 Tola (11.66g)</span>
-              </div>
-              <div class="amount-line">
-                <span class="npr-currency">रू</span>
-                <span class="npr-amount amount-silver" id="priceSilverTola">-,---</span>
-              </div>
-            </div>
-
-            <div class="pedestal-divider divider-silver"></div>
-
-            <!-- Secondary 10 Gram Price -->
-            <div class="pedestal-secondary-price">
-              <div class="sec-unit-col">
-                <span class="sec-np">प्रति १० ग्राम</span>
-                <span class="sec-en">Per 10 Grams</span>
-              </div>
-              <div class="sec-amount-col">
-                <span class="sec-currency">रू</span>
-                <span class="sec-amount" id="priceSilver10g">-,---</span>
-              </div>
-            </div>
-
-            <!-- Footer Details -->
-            <div class="pedestal-footer">
-              <div class="prev-day-row">
-                <span class="prev-label">हिजोको दर / Yesterday:</span>
-                <span class="prev-value" id="yesterdaySilverTola">रू --,---</span>
-              </div>
-              <div class="formula-caption" id="noteSilver">
-                <span class="caption-bullet">◆</span>
-                <span>+रू १५ प्रति तोला बजार समायोजन</span>
-              </div>
+              <div class="prev-rate-txt">हिजो: <strong id="yesterdaySilverTola">रू --,---</strong></div>
             </div>
           </article>
 
