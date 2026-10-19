@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Shree Subha Laxmi Jewellery | Live Gold & Silver Rates Today | श्री शुभ लक्ष्मी ज्वेलरी</title>
+  
+  <meta name="description" content="Live 24K Gold, 22K Gold, and Silver Rates for Shree Subha Laxmi Jewellery. Real-time rates updated directly for Android TV and digital display.">
+  <meta name="theme-color" content="#070a12">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts for Luxury Jewellery Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Mukta:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="tv-mode">
+  <!-- Subtle Ambient Glow Effects -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-top-right"></div>
+  <div class="ambient-glow glow-center"></div>
+
+  <div class="tv-container" id="tvContainer">
+    <!-- HEADER SECTION -->
+    <header class="tv-header">
+      <div class="brand-block">
+        <div class="brand-logo-wrap">
+          <img src="assets/logo.png" alt="Shree Subha Laxmi Jewellery Logo" class="brand-logo" id="brandLogo">
+          <div class="logo-ring"></div>
+        </div>
+        <div class="brand-titles">
+          <h1 class="brand-nepali" id="brandNepaliTitle">श्री शुभ लक्ष्मी ज्वेलरी</h1>
+          <h2 class="brand-english" id="brandEnglishTitle">SHREE SUBHA LAXMI JEWELLERY</h2>
+          <div class="brand-sub-badge">
+            <span class="badge-dot"></span>
+            <span id="brandTagline">शुद्धता, गुणस्तर र विश्वासको ५ दशक • Hallmark Certified</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-center-info">
+        <div class="live-pill">
+          <span class="pulse-beacon"></span>
+          <span class="live-text">प्रत्यक्ष दर / LIVE RATES</span>
+        </div>
+        <div class="refresh-countdown" id="refreshContainer" title="Click to refresh now">
+          <svg class="progress-ring" width="28" height="28" viewBox="0 0 36 36">
+            <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <path class="ring-fill" id="countdownCircle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          </svg>
+          <span class="countdown-sec" id="countdownText">60s</span>
+        </div>
+      </div>
+
+      <div class="datetime-block">
+        <div class="time-display" id="timeDisplay">--:--:-- --</div>
+        <div class="date-row">
+          <span class="nepali-date" id="nepaliDateDisplay">लोड हुँदैछ...</span>
+          <span class="date-separator">•</span>
+          <span class="english-date" id="englishDateDisplay">Loading date...</span>
+        </div>
+      </div>
+
+      <!-- Quick Control Action Icons (Accessible via Remote / Mouse) -->
+      <div class="header-actions">
+        <button class="icon-btn" id="btnRefresh" title="Refresh Rates Now" aria-label="Refresh Rates">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="btnFullscreen" title="Toggle TV Fullscreen (Press F)" aria-label="Fullscreen">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="btnSettings" title="Settings (Press S)" aria-label="Settings">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN BODY CONTENT -->
+    <main class="tv-main">
+      <!-- LEFT / CENTER: LUXURY RATES DISPLAY (3 PRIMARY CARDS) -->
+      <section class="rates-section" aria-label="Live Jewellery Rates">
+        <div class="rates-cards-grid">
+          
+          <!-- CARD 1: 24K GOLD (छापावाल सुन) -->
+          <article class="rate-card card-gold-24k" id="cardGold24k">
+            <div class="card-gold-accent"></div>
+            <div class="card-header">
+              <div class="card-icon-box gold-icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                  <path d="M21 7.28l-8.5-4.25a1 1 0 0 0-1 0L3 7.28a1 1 0 0 0-.5.88v7.68a1 1 0 0 0 .5.88l8.5 4.25a1 1 0 0 0 1 0l8.5-4.25a1 1 0 0 0 .5-.88V8.16a1 1 0 0 0-.5-.88zM12 4.41l6.73 3.37L12 11.15 5.27 7.78 12 4.41zm-7 5.15l6 3v6.73l-6-3V9.56zm8 9.73v-6.73l6-3v6.73l-6 3z"/>
+                </svg>
+              </div>
+              <div class="card-title-group">
+                <div class="karat-tag gold-tag">24K PURE GOLD (99.9%)</div>
+                <h3 class="card-nepali-title">छापावाल सुन (२४ क्यारेट)</h3>
+                <span class="card-eng-subtitle">Fine Hallmark Gold</span>
+              </div>
+              <div class="rate-trend-badge" id="trend24k">
+                <span class="trend-arrow">▲</span>
+                <span class="trend-text">+ रू ५००</span>
+              </div>
+            </div>
+
+            <div class="card-price-primary">
+              <div class="price-unit-label">
+                <span class="unit-main">प्रति १ तोला दर</span>
+                <span class="unit-sub">Rate Per 1 Tola (11.66g)</span>
+              </div>
+              <div class="price-value-container">
+                <span class="currency-symbol">रू</span>
+                <span class="price-amount" id="price24kTola">--,--,---</span>
+              </div>
+            </div>
+
+            <div class="card-price-secondary">
+              <div class="price-unit-label">
+                <span class="unit-main">प्रति १० ग्राम दर</span>
+                <span class="unit-sub">Per 10 Grams</span>
+              </div>
+              <div class="price-value-secondary">
+                <span class="currency-symbol-sm">रू</span>
+                <span class="price-amount-sm" id="price24k10g">--,--,---</span>
+              </div>
+            </div>
+
+            <div class="card-footer-meta">
+              <div class="yesterday-compare">
+                <span class="meta-label">हिजोको दर (Yesterday):</span>
+                <span class="meta-val" id="yesterday24kTola">रू --,---</span>
+              </div>
+              <div class="adjustment-note" id="note24k">
+                <span class="note-icon">✨</span>
+                <span>+रू ५०० प्रति तोला थप गरिएको</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 2: 22K GOLD (२२ क्यारेट सुन) -->
+          <article class="rate-card card-gold-22k" id="cardGold22k">
+            <div class="card-gold-accent accent-22k"></div>
+            <div class="card-header">
+              <div class="card-icon-box gold-icon-22k">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                  <path d="M12 2L9.5 8.5 2 9.2l5.5 4.8L6 21.5 12 18l6 3.5-1.5-7.5 5.5-4.8-7.5-.7L12 2z"/>
+                </svg>
+              </div>
+              <div class="card-title-group">
+                <div class="karat-tag gold-tag-22k">22K JEWELLERY GOLD (91.6%)</div>
+                <h3 class="card-nepali-title">२२ क्यारेट गहना सुन</h3>
+                <span class="card-eng-subtitle">Standard 22K Ornaments</span>
+              </div>
+              <div class="rate-trend-badge" id="trend22k">
+                <span class="trend-arrow">▲</span>
+                <span class="trend-text">+ रू ४६०</span>
+              </div>
+            </div>
+
+            <div class="card-price-primary">
+              <div class="price-unit-label">
+                <span class="unit-main">प्रति १ तोला दर</span>
+                <span class="unit-sub">Rate Per 1 Tola (11.66g)</span>
+              </div>
+              <div class="price-value-container">
+                <span class="currency-symbol">रू</span>
+                <span class="price-amount" id="price22kTola">--,--,---</span>
+              </div>
+            </div>
+
+            <div class="card-price-secondary">
+              <div class="price-unit-label">
+                <span class="unit-main">प्रति १० ग्राम दर</span>
+                <span class="unit-sub">Per 10 Grams</span>
+              </div>
+              <div class="price-value-secondary">
+                <span class="currency-symbol-sm">रू</span>
+                <span class="price-amount-sm" id="price22k10g">--,--,---</span>
+              </div>
+            </div>
+
+            <div class="card-footer-meta">
+              <div class="yesterday-compare">
+                <span class="meta-label">हिजोको दर (Yesterday):</span>
+                <span class="meta-val" id="yesterday22kTola">रू --,---</span>
+              </div>
+              <div class="adjustment-note" id="note22k">
+                <span class="note-icon">⚖️</span>
+                <span>२४ क्यारेटको ९२% (Formula: 24K × 92%)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 3: SILVER (असली चाँदी दर) -->
+          <article class="rate-card card-silver" id="cardSilver">
+            <div class="card-gold-accent accent-silver"></div>
+            <div class="card-header">
+              <div class="card-icon-box silver-icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                </svg>
+              </div>
+              <div class="card-title-group">
+                <div class="karat-tag silver-tag">FINE SILVER (99.9% PURE)</div>
+                <h3 class="card-nepali-title">असली चाँदी दर (सिल्भर)</h3>
+                <span class="card-eng-subtitle">Pure Silver Ornaments & Bullion</span>
+              </div>
+              <div class="rate-trend-badge" id="trendSilver">
+                <span class="trend-arrow">▲</span>
+                <span class="trend-text">+ रू १५</span>
+              </div>
+            </div>
+
+            <div class="card-price-primary">
+              <div class="price-unit-label">
+                <span class="unit-main">प्रति १ तोला दर</span>
+                <span class="unit-sub">Rate Per 1 Tola (11.66g)</span>
+              </div>
+              <div class="price-value-container">
+                <span class="currency-symbol">रू</span>
+                <span class="price-amount" id="priceSilverTola">-,---</span>
+              </div>
+            </div>
+
+            <div class="card-price-secondary">
+              <div class="price-unit-label">
+                <span class="unit-main">प्रति १० ग्राम दर</span>
+                <span class="unit-sub">Per 10 Grams</span>
+              </div>
+              <div class="price-value-secondary">
+                <span class="currency-symbol-sm">रू</span>
+                <span class="price-amount-sm" id="priceSilver10g">-,---</span>
+              </div>
+            </div>
+
+            <div class="card-footer-meta">
+              <div class="yesterday-compare">
+                <span class="meta-label">हिजोको दर (Yesterday):</span>
+                <span class="meta-val" id="yesterdaySilverTola">रू --,---</span>
+              </div>
+              <div class="adjustment-note" id="noteSilver">
+                <span class="note-icon">✨</span>
+                <span>+रू १५ प्रति तोला थप गरिएको</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: SHOWCASE CAROUSEL & STORE HIGHLIGHTS -->
+      <aside class="showcase-section" aria-label="Jewellery Showcase">
+        <div class="showcase-card">
+          <div class="showcase-header">
+            <span class="showcase-badge">💎 विशेष संकलन / FEATURED</span>
+            <h4 class="showcase-title" id="showcaseTitle">परम्परागत ब्राइडल रानीहार</h4>
+          </div>
+
+          <div class="showcase-viewer">
+            <!-- Rotating Showcase Images -->
+            <div class="slides-container" id="slidesContainer">
+              <div class="slide active" data-title="परम्परागत ब्राइडल रानीहार" data-subtitle="Royal Traditional Bridal Collection">
+                <img src="assets/necklace.jpg" alt="Bridal Gold Necklace Set" loading="eager">
+              </div>
+              <div class="slide" data-title="२४ क्यारेट कलात्मक चुरा तथा कंगन" data-subtitle="Exquisite 24K Handcrafted Bangles">
+                <img src="assets/bangles.jpg" alt="Traditional Gold Bangles" loading="lazy">
+              </div>
+              <div class="slide" data-title="प्रमाणित डायमण्ड तथा सुनका औँठीहरु" data-subtitle="Certified Diamond & Solitaire Rings">
+                <img src="assets/rings.jpg" alt="Gold and Diamond Rings" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Slideshow Overlay Info -->
+            <div class="slide-caption-bar">
+              <div class="caption-text">
+                <span class="caption-nepali" id="captionNepali">परम्परागत ब्राइडल रानीहार</span>
+                <span class="caption-english" id="captionEnglish">Royal Traditional Bridal Collection</span>
+              </div>
+              <div class="slide-indicators" id="slideIndicators">
+                <span class="indicator-dot active" data-index="0"></span>
+                <span class="indicator-dot" data-index="1"></span>
+                <span class="indicator-dot" data-index="2"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Trust Badges -->
+          <div class="trust-features-grid">
+            <div class="feature-item">
+              <span class="feature-icon">🛡️</span>
+              <div class="feature-text">
+                <strong>१००% हलमार्क</strong>
+                <span>Purity Guaranteed</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">💎</span>
+              <div class="feature-text">
+                <strong>विशेष अर्डर</strong>
+                <span>Custom Designs</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🔄</span>
+              <div class="feature-text">
+                <strong>सट्टापट्टा सुविधा</strong>
+                <span>Easy Exchange</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- BOTTOM MOVABLE MARQUEE TICKER (USER REQUIREMENT) -->
+    <footer class="tv-footer-ticker" aria-label="Store News and Contact Details">
+      <div class="ticker-prefix">
+        <span class="ticker-badge">सूचना / NOTICE</span>
+      </div>
+      
+      <div class="ticker-track-wrap">
+        <div class="ticker-track" id="tickerTrack">
+          <!-- Marquee item repeated twice for seamless infinite scroll -->
+          <div class="ticker-content" id="tickerContentA">
+            <span class="t-highlight">✨ श्री शुभ लक्ष्मी ज्वेलरी (Shree Subha Laxmi Jewellery) ✨</span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">📞 सम्पर्क / Call & WhatsApp:</strong> <span class="contact-phone" id="tickerPhone">+977-9851000000, 01-4XXXXXX</span></span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">📍 ठेगाना / Location:</strong> <span class="contact-address" id="tickerAddress">न्यूरोड, काठमाडौं, नेपाल</span></span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">🌟 आजको दरभाउ:</strong> २४ क्यारेट छापावाल सुन, २२ क्यारेट गहना सुन तथा असली चाँदीको ताजा बजार दर FENEGOSIDA अनुसार अपडेट गरिएको छ।</span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">👑 विशेष सेवा:</strong> शुभ विवाह, चाडपर्व तथा विशेष अवसरका लागि मनपर्ने डिजाइनका गहनाहरु निर्माण गरिन्छ।</span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">💎 विश्वासको धरोहर:</strong> १००% शुद्धता, उच्च गुणस्तर र भरपर्दो ग्राहक सेवा हाम्रो प्रतिबद्धता!</span>
+          </div>
+
+          <div class="ticker-content" id="tickerContentB" aria-hidden="true">
+            <span class="t-highlight">✨ श्री शुभ लक्ष्मी ज्वेलरी (Shree Subha Laxmi Jewellery) ✨</span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">📞 सम्पर्क / Call & WhatsApp:</strong> <span class="contact-phone" id="tickerPhone2">+977-9851000000, 01-4XXXXXX</span></span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">📍 ठेगाना / Location:</strong> <span class="contact-address" id="tickerAddress2">न्यूरोड, काठमाडौं, नेपाल</span></span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">🌟 आजको दरभाउ:</strong> २४ क्यारेट छापावाल सुन, २२ क्यारेट गहना सुन तथा असली चाँदीको ताजा बजार दर FENEGOSIDA अनुसार अपडेट गरिएको छ।</span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">👑 विशेष सेवा:</strong> शुभ विवाह, चाडपर्व तथा विशेष अवसरका लागि मनपर्ने डिजाइनका गहनाहरु निर्माण गरिन्छ।</span>
+            <span class="t-sep">✦</span>
+            <span class="t-item"><strong class="t-tag">💎 विश्वासको धरोहर:</strong> १००% शुद्धता, उच्च गुणस्तर र भरपर्दो ग्राहक सेवा हाम्रो प्रतिबद्धता!</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- CONFIGURATION / SETTINGS MODAL (Press 'S' or click gear) -->
+  <div class="settings-modal" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
+    <div class="settings-backdrop" id="settingsBackdrop"></div>
+    <div class="settings-box">
+      <div class="settings-modal-header">
+        <h3 id="settingsModalTitle">⚙️ स्टोर सेटिङ्स / Store Settings</h3>
+        <button class="modal-close-btn" id="btnCloseSettings" aria-label="Close Settings">&times;</button>
+      </div>
+
+      <div class="settings-form">
+        <div class="form-row">
+          <label for="cfgPhone">📞 फोन / सम्पर्क नम्बर (Contact Numbers):</label>
+          <input type="text" id="cfgPhone" placeholder="+977-98XXXXXXXX, 01-XXXXXXX">
+        </div>
+
+        <div class="form-row">
+          <label for="cfgAddress">📍 पसलको ठेगाना (Store Location):</label>
+          <input type="text" id="cfgAddress" placeholder="न्यूरोड, काठमाडौं, नेपाल">
+        </div>
+
+        <div class="form-row">
+          <label for="cfgCustomNotice">📢 मुभिङ सूचना / Ticker Notice Message:</label>
+          <textarea id="cfgCustomNotice" rows="2" placeholder="विशेष चाडपर्व छुट तथा गहना सम्बन्धी सन्देश..."></textarea>
+        </div>
+
+        <div class="form-group-divider">दर समायोजन नियमहरु (Rate Rules)</div>
+
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="cfgOffset24k">२४ क्यारेट सुन समायोजन (Rs):</label>
+            <input type="number" id="cfgOffset24k" value="500">
+            <small class="field-hint">User rule: +500 tola</small>
+          </div>
+          <div class="form-row">
+            <label for="cfgMultiplier22k">२२ क्यारेट प्रतिशत (%):</label>
+            <input type="number" id="cfgMultiplier22k" value="92" step="0.1">
+            <small class="field-hint">User rule: 24K × 92%</small>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="cfgOffsetSilver">चाँदी समायोजन (Rs):</label>
+            <input type="number" id="cfgOffsetSilver" value="15">
+            <small class="field-hint">User rule: +15 tola</small>
+          </div>
+          <div class="form-row">
+            <label for="cfgRefreshSeconds">अपडेट दर (सेकेन्ड / Refresh Rate):</label>
+            <select id="cfgRefreshSeconds">
+              <option value="30">३० सेकेन्ड (30s)</option>
+              <option value="60" selected>१ मिनेट (60s - सिफारिस)</option>
+              <option value="120">२ मिनेट (120s)</option>
+              <option value="300">५ मिनेट (300s)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row checkbox-row">
+          <label class="toggle-switch">
+            <input type="checkbox" id="cfgNepaliDigits">
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="toggle-label">नेपाली अंकमा दर देखाउनुहोस् (Display in Devanagari numerals: २,९०,७००)</span>
+        </div>
+
+        <div class="settings-actions">
+          <button type="button" class="btn-secondary" id="btnResetSettings">पूर्वनिर्धारित (Reset Default)</button>
+          <button type="button" class="btn-primary" id="btnSaveSettings">सेभ गर्नुहोस् (Save Changes)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFFLINE / TOAST NOTIFICATION -->
+  <div class="tv-toast" id="tvToast" role="alert" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

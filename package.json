@@ -1,0 +1,12 @@
+{
+  "name": "shree-subha-laxmi-jewellery-rates",
+  "version": "1.0.0",
+  "description": "Live Gold and Silver Rates Display for Shree Subha Laxmi Jewellery, optimized for Android TV and web display with Vercel support.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["jewellery", "gold-rates", "nepal", "android-tv", "subha-laxmi", "fenegosida"],
+  "author": "Shree Subha Laxmi Jewellery",
+  "license": "MIT"
+}
