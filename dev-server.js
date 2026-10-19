@@ -29,6 +29,22 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // Handle /api/time
+  if (req.url === '/api/time' || req.url.startsWith('/api/time?')) {
+    const now = new Date();
+    res.writeHead(200, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': 'no-store, no-cache, must-revalidate'
+    });
+    res.end(JSON.stringify({
+      timestamp: now.getTime(),
+      iso: now.toISOString(),
+      timezone: 'Asia/Kathmandu',
+      nepalOffsetMinutes: 345
+    }));
+    return;
+  }
+
   // Handle /api/rates
   if (req.url === '/api/rates' || req.url.startsWith('/api/rates?')) {
     try {

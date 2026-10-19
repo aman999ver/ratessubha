@@ -25,7 +25,9 @@ const state = {
   countdownSec: 60,
   currentSlide: 0,
   slideshowTimer: null,
-  wakeLock: null
+  wakeLock: null,
+  clockOffsetMs: 0,
+  hasSyncedTime: false
 };
 
 // Fallback Baseline Data (in case network/Fenegosida is unreachable)
@@ -214,6 +216,7 @@ async function fetchRates() {
     state.rawApiResponse = rawData;
     processAndDisplayRates(rawData);
     state.lastUpdated = new Date();
+    syncNetworkTime();
   } else {
     console.error('All rate endpoints failed. Using snapshot fallback.', fetchError);
     if (!state.rawApiResponse) {
@@ -436,47 +439,153 @@ function startRefreshCountdown() {
 }
 
 /* ==========================================================================
-   CLOCK & NEPALI DATE CALENDAR
+   NETWORK TIME SYNCHRONIZATION & ACCURATE NEPALI CALENDAR
    ========================================================================== */
-function initClockAndCalendar() {
-  function updateTime() {
-    const now = new Date();
-    
-    // Format Time: 03:45:22 PM
-    let hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12 || 12;
-    const timeStr = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
-    
-    const timeEl = document.getElementById('timeDisplay');
-    if (timeEl) timeEl.textContent = timeStr;
+const NEPALI_CALENDAR_DATA = {
+  2080: [31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30],
+  2081: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31],
+  2082: [31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30],
+  2083: [31, 31, 32, 31, 31, 30, 30, 30, 29, 30, 30, 30],
+  2084: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31],
+  2085: [31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30]
+};
 
-    // Format English Date: Monday, Oct 19, 2026
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const engDateStr = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
-    const engEl = document.getElementById('englishDateDisplay');
-    if (engEl) engEl.textContent = engDateStr;
+// Accurate AD to Bikram Sambat (BS) date conversion
+function adToBs(dateObj) {
+  const refAd = new Date(Date.UTC(2024, 3, 13)); // 2024-04-13 = 2081-01-01 (Baishakh 1)
+  const targetAd = new Date(Date.UTC(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate()));
+  let diffDays = Math.round((targetAd - refAd) / (1000 * 60 * 60 * 24));
 
-    // Format Nepali Date (Bikram Sambat Approximation & Days)
-    const nepDays = ['आइतबार', 'सोमबार', 'मंगलबार', 'बुधबार', 'बिहीबार', 'शुक्रबार', 'शनिबार'];
-    const nepMonths = ['बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज', 'कार्तिक', 'मंसिर', 'पुस', 'माघ', 'फागुन', 'चैत'];
-    
-    // Approximate BS mapping (AD year + 56/57)
-    // 2026 Oct ~ 2083 Kartik
-    const bsYear = now.getFullYear() + 57;
-    // Oct 19 is approx Kartik 3
-    const bsDay = ((now.getDate() + 14) % 30) + 1;
-    const nepDateStr = `${nepDays[now.getDay()]}, ${nepMonths[6]} ${convertToNepaliDigits(bsDay.toString())}, ${convertToNepaliDigits(bsYear.toString())}`;
-    
-    const nepEl = document.getElementById('nepaliDateDisplay');
-    if (nepEl) nepEl.textContent = nepDateStr;
+  let bsYear = 2081;
+  let bsMonth = 0; // 0 = Baishakh
+  let bsDay = 1;
+
+  if (diffDays >= 0) {
+    while (true) {
+      const yearMonths = NEPALI_CALENDAR_DATA[bsYear] || [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 30];
+      const monthDays = yearMonths[bsMonth];
+      if (diffDays < monthDays) {
+        bsDay = diffDays + 1;
+        break;
+      }
+      diffDays -= monthDays;
+      bsMonth++;
+      if (bsMonth > 11) {
+        bsMonth = 0;
+        bsYear++;
+      }
+    }
+  }
+  return { year: bsYear, month: bsMonth, day: bsDay };
+}
+
+// Compute accurate Nepal Standard Time (UTC+5:45) using server-synced epoch
+function getSyncedNepalDate() {
+  const trueNowMs = Date.now() + (state.clockOffsetMs || 0);
+  const localOffsetMinutes = new Date(trueNowMs).getTimezoneOffset();
+  const utcMs = trueNowMs + (localOffsetMinutes * 60000);
+  const nepalMs = utcMs + (345 * 60000); // +5 hours 45 mins
+  return new Date(nepalMs);
+}
+
+// Fetch exact atomic time from server / reliable time APIs to eliminate device clock skew
+async function syncNetworkTime() {
+  const startTime = Date.now();
+  
+  // Method 1: Fetch dedicated /api/time endpoint
+  try {
+    const res = await fetch('/api/time?t=' + startTime, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      const endTime = Date.now();
+      const latency = Math.round((endTime - startTime) / 2);
+      if (data && data.timestamp) {
+        const trueUtcTime = data.timestamp + latency;
+        state.clockOffsetMs = trueUtcTime - endTime;
+        state.hasSyncedTime = true;
+        updateTime();
+        return;
+      }
+    }
+  } catch (e) {
+    // Continue to fallbacks
   }
 
+  // Method 2: Fallback to WorldTimeAPI for Asia/Kathmandu
+  try {
+    const res = await fetch('https://worldtimeapi.org/api/timezone/Asia/Kathmandu', { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.unixtime) {
+        const endTime = Date.now();
+        const trueUtcTime = (data.unixtime * 1000) + Math.round((endTime - startTime) / 2);
+        state.clockOffsetMs = trueUtcTime - endTime;
+        state.hasSyncedTime = true;
+        updateTime();
+        return;
+      }
+    }
+  } catch (e) {
+    // Continue to fallbacks
+  }
+
+  // Method 3: Read HTTP server Date header from rates API
+  try {
+    const headRes = await fetch('/api/rates', { method: 'HEAD', cache: 'no-store' });
+    const dateHeader = headRes.headers.get('date');
+    if (dateHeader) {
+      const serverTime = new Date(dateHeader).getTime();
+      const endTime = Date.now();
+      state.clockOffsetMs = serverTime - endTime;
+      state.hasSyncedTime = true;
+      updateTime();
+    }
+  } catch (e) {
+    // Local fallback will continue safely
+  }
+}
+
+function updateTime() {
+  const npDate = getSyncedNepalDate();
+  
+  // Format Time: 03:45:22 PM
+  let hours = npDate.getHours();
+  const minutes = String(npDate.getMinutes()).padStart(2, '0');
+  const seconds = String(npDate.getSeconds()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12;
+  const timeStr = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+  
+  const timeEl = document.getElementById('timeDisplay');
+  if (timeEl) timeEl.textContent = timeStr;
+
+  // Format English Date: Monday, Oct 19, 2026
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const engDateStr = `${days[npDate.getDay()]}, ${months[npDate.getMonth()]} ${npDate.getDate()}, ${npDate.getFullYear()}`;
+  const engEl = document.getElementById('englishDateDisplay');
+  if (engEl) engEl.textContent = engDateStr;
+
+  // Format Exact Bikram Sambat (BS) Nepali Date
+  const nepDays = ['आइतबार', 'सोमबार', 'मंगलबार', 'बुधबार', 'बिहीबार', 'शुक्रबार', 'शनिबार'];
+  const nepMonths = ['बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज', 'कार्तिक', 'मंसिर', 'पुस', 'माघ', 'फागुन', 'चैत'];
+  
+  const bs = adToBs(npDate);
+  const nepDateStr = `${nepDays[npDate.getDay()]}, ${nepMonths[bs.month]} ${convertToNepaliDigits(bs.day.toString())}, ${convertToNepaliDigits(bs.year.toString())}`;
+  
+  const nepEl = document.getElementById('nepaliDateDisplay');
+  if (nepEl) nepEl.textContent = nepDateStr;
+}
+
+function initClockAndCalendar() {
   updateTime();
   setInterval(updateTime, 1000);
+
+  // Sync with accurate network time immediately
+  syncNetworkTime();
+
+  // Re-sync network time every 5 minutes in background
+  setInterval(syncNetworkTime, 5 * 60 * 1000);
 }
 
 /* ==========================================================================

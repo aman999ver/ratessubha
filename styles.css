@@ -722,11 +722,12 @@ html, body {
   -webkit-flex: 1;
   flex: 1;
   position: relative;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(234, 179, 8, 0.35);
-  min-height: 140px;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  min-height: 0;
   background: #000;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.6);
 }
 
 .slides-container {
@@ -822,33 +823,30 @@ html, body {
   background: #d4af37;
 }
 
-/* Store Placard */
-.store-placard {
+/* Side Display Royal Brand & Logo Banner */
+.side-brand-banner {
   width: 100%;
-  background: rgba(234, 179, 8, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 12px;
-  padding: 8px 12px;
-  margin-top: 8px;
-}
-
-.placard-top {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
   align-items: center;
-  margin-bottom: 3px;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.7);
+  background: linear-gradient(90deg, rgba(234, 179, 8, 0.15) 0%, rgba(15, 23, 42, 0.7) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
-.placard-icon-box {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: rgba(234, 179, 8, 0.2);
-  border: 1px solid rgba(234, 179, 8, 0.4);
-  color: #fde047;
+.side-logo-box {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  width: clamp(44px, 6.5vh, 62px);
+  height: clamp(44px, 6.5vh, 62px);
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -858,11 +856,26 @@ html, body {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin-right: 8px;
+  margin-right: 12px;
   flex-shrink: 0;
 }
 
-.placard-title-group {
+.side-display-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(234, 179, 8, 0.5));
+}
+
+.side-logo-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.side-brand-text {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -870,72 +883,68 @@ html, body {
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
   flex-direction: column;
+  min-width: 0;
 }
 
-.placard-kicker {
+.side-brand-kicker {
   font-size: 9px;
+  font-size: clamp(0.55rem, 0.85vh, 0.72rem);
   font-weight: 800;
-  letter-spacing: 1px;
-  color: #d4af37;
-}
-
-.placard-store-name {
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  font-size: clamp(0.72rem, 1.15vh, 0.95rem);
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.placard-body {
-  padding-left: 36px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-
-.placard-address {
-  font-size: 11px;
-  font-size: clamp(0.64rem, 0.95vh, 0.8rem);
-  color: #f1f5f9;
-  line-height: 1.2;
-}
-
-.placard-province {
-  font-size: 10px;
   color: #fde047;
-  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-.placard-contact-line {
+.side-brand-name {
+  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
+  font-size: 18px;
+  font-size: clamp(1rem, 1.8vh, 1.35rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 30%, #eab308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.side-brand-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-size: clamp(0.58rem, 0.9vh, 0.75rem);
+  color: #cbd5e1;
+  letter-spacing: 1.5px;
+}
+
+/* Floating Brand Tag inside Large Viewer */
+.viewer-brand-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
   align-items: center;
-  margin-top: 3px;
-  font-size: 11px;
-  font-size: clamp(0.65rem, 1vh, 0.82rem);
+  background: rgba(5, 7, 13, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  padding: 4px 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
-.contact-icon {
-  color: #fde047;
-  margin-right: 5px;
+.tag-logo-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  margin-right: 6px;
 }
 
-.contact-label {
-  color: #94a3b8;
-  margin-right: 5px;
-}
-
-.contact-number {
-  color: #ffffff;
+.tag-text {
+  font-size: 10px;
   font-weight: 800;
+  color: #fde047;
+  letter-spacing: 1px;
 }
 
 /* Trust Badges */
