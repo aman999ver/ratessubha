@@ -69,6 +69,11 @@ const SNAPSHOT_FALLBACK = [
 // Slides data
 const SLIDES = [
   {
+    img: 'assets/subhalaxmijewellery.png',
+    nepali: 'श्री शुभ लक्ष्मी ज्वेलरी',
+    english: 'Shree Shubha Laxmi Jewellery • Biratnagar'
+  },
+  {
     img: 'assets/necklace.jpg',
     nepali: 'परम्परागत ब्राइडल रानीहार सेट',
     english: 'Royal Traditional Bridal Collection'
