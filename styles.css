@@ -695,39 +695,26 @@ html, body {
 .showcase-panel {
   width: 100%;
   height: 100%;
-  background: #0d1527;
-  background: radial-gradient(ellipse at 50% 0%, rgba(20, 28, 52, 0.8) 0%, rgba(9, 14, 28, 0.95) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 18px;
-  padding: 14px;
-  padding: clamp(10px, 1.4vh, 18px);
+  background: #000000;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 16px;
+  padding: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
   overflow: hidden;
+  position: relative;
 }
 
-/* Rotating Slideshow */
+/* Full-Height Rotating Banner Viewer (Big Right-Side Showcase) */
 .showcase-viewer {
   width: 100%;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  flex: 1;
+  height: 100%;
   position: relative;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(234, 179, 8, 0.4);
-  min-height: 0;
   background: #000;
-  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.6);
 }
 
 .slides-container {
@@ -755,6 +742,7 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -763,8 +751,8 @@ html, body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(5, 7, 13, 0.9) 50%, rgba(5, 7, 13, 0.98) 100%);
-  padding: 8px 12px;
+  background: linear-gradient(180deg, transparent 0%, rgba(5, 7, 13, 0.8) 40%, rgba(5, 7, 13, 0.98) 100%);
+  padding: 14px 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -788,15 +776,21 @@ html, body {
 
 .caption-nepali {
   font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 13px;
-  font-size: clamp(0.74rem, 1.2vh, 0.95rem);
-  font-weight: 700;
+  font-size: 16px;
+  font-size: clamp(0.9rem, 1.5vh, 1.25rem);
+  font-weight: 800;
   color: #fde047;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .caption-english {
-  font-size: 10px;
+  font-size: 11px;
+  font-size: clamp(0.65rem, 1vh, 0.85rem);
   color: #cbd5e1;
+  letter-spacing: 1px;
+  margin-top: 2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .slide-indicators {
@@ -809,197 +803,20 @@ html, body {
 }
 
 .indicator-dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  margin-left: 4px;
+  background: rgba(255, 255, 255, 0.35);
+  margin-left: 6px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .indicator-dot.active {
-  width: 16px;
+  width: 22px;
   border-radius: 10px;
   background: #d4af37;
-}
-
-/* Side Display Royal Brand & Logo Banner */
-.side-brand-banner {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  padding: 8px 12px;
-  background: rgba(15, 23, 42, 0.7);
-  background: linear-gradient(90deg, rgba(234, 179, 8, 0.15) 0%, rgba(15, 23, 42, 0.7) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 12px;
-  margin-bottom: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-.side-logo-box {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  width: clamp(44px, 6.5vh, 62px);
-  height: clamp(44px, 6.5vh, 62px);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  margin-right: 12px;
-  flex-shrink: 0;
-}
-
-.side-display-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(234, 179, 8, 0.5));
-}
-
-.side-logo-glow {
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(234, 179, 8, 0.3) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.side-brand-text {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.side-brand-kicker {
-  font-size: 9px;
-  font-size: clamp(0.55rem, 0.85vh, 0.72rem);
-  font-weight: 800;
-  color: #fde047;
-  letter-spacing: 1px;
-}
-
-.side-brand-name {
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 18px;
-  font-size: clamp(1rem, 1.8vh, 1.35rem);
-  font-weight: 800;
-  line-height: 1.15;
-  color: #ffffff;
-  background: linear-gradient(135deg, #ffffff 0%, #fef08a 30%, #eab308 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.side-brand-sub {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  font-size: clamp(0.58rem, 0.9vh, 0.75rem);
-  color: #cbd5e1;
-  letter-spacing: 1.5px;
-}
-
-/* Floating Brand Tag inside Large Viewer */
-.viewer-brand-tag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 5;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  background: rgba(5, 7, 13, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  padding: 4px 10px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-}
-
-.tag-logo-img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  margin-right: 6px;
-}
-
-.tag-text {
-  font-size: 10px;
-  font-weight: 800;
-  color: #fde047;
-  letter-spacing: 1px;
-}
-
-/* Trust Badges */
-.trust-vector-grid {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  margin-top: 8px;
-}
-
-.trust-badge {
-  width: 31.5%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 5px 6px;
-}
-
-.trust-svg-icon {
-  color: #d4af37;
-  margin-right: 5px;
-  flex-shrink: 0;
-}
-
-.trust-label-group {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-
-.trust-main {
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.1;
-}
-
-.trust-sub {
-  font-size: 8px;
-  color: #94a3b8;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
 }
 
 /* ==========================================================================

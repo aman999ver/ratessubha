@@ -713,39 +713,26 @@ html, body {
 .showcase-panel {
   width: 100%;
   height: 100%;
-  background: #0d1527;
-  background: radial-gradient(ellipse at 50% 0%, rgba(20, 28, 52, 0.8) 0%, rgba(9, 14, 28, 0.95) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 18px;
-  padding: 14px;
-  padding: clamp(10px, 1.4vh, 18px);
+  background: #000000;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 16px;
+  padding: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
   overflow: hidden;
+  position: relative;
 }
 
-/* Rotating Slideshow */
+/* Full-Height Rotating Banner Viewer (Big Right-Side Showcase) */
 .showcase-viewer {
   width: 100%;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  flex: 1;
+  height: 100%;
   position: relative;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(234, 179, 8, 0.4);
-  min-height: 0;
   background: #000;
-  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.6);
 }
 
 .slides-container {
@@ -773,6 +760,7 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -781,8 +769,8 @@ html, body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(5, 7, 13, 0.9) 50%, rgba(5, 7, 13, 0.98) 100%);
-  padding: 8px 12px;
+  background: linear-gradient(180deg, transparent 0%, rgba(5, 7, 13, 0.8) 40%, rgba(5, 7, 13, 0.98) 100%);
+  padding: 14px 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -806,15 +794,21 @@ html, body {
 
 .caption-nepali {
   font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 13px;
-  font-size: clamp(0.74rem, 1.2vh, 0.95rem);
-  font-weight: 700;
+  font-size: 16px;
+  font-size: clamp(0.9rem, 1.5vh, 1.25rem);
+  font-weight: 800;
   color: #fde047;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .caption-english {
-  font-size: 10px;
+  font-size: 11px;
+  font-size: clamp(0.65rem, 1vh, 0.85rem);
   color: #cbd5e1;
+  letter-spacing: 1px;
+  margin-top: 2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .slide-indicators {
@@ -827,197 +821,20 @@ html, body {
 }
 
 .indicator-dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  margin-left: 4px;
+  background: rgba(255, 255, 255, 0.35);
+  margin-left: 6px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .indicator-dot.active {
-  width: 16px;
+  width: 22px;
   border-radius: 10px;
   background: #d4af37;
-}
-
-/* Side Display Royal Brand & Logo Banner */
-.side-brand-banner {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  padding: 8px 12px;
-  background: rgba(15, 23, 42, 0.7);
-  background: linear-gradient(90deg, rgba(234, 179, 8, 0.15) 0%, rgba(15, 23, 42, 0.7) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 12px;
-  margin-bottom: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-.side-logo-box {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  width: clamp(44px, 6.5vh, 62px);
-  height: clamp(44px, 6.5vh, 62px);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  margin-right: 12px;
-  flex-shrink: 0;
-}
-
-.side-display-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(234, 179, 8, 0.5));
-}
-
-.side-logo-glow {
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(234, 179, 8, 0.3) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.side-brand-text {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.side-brand-kicker {
-  font-size: 9px;
-  font-size: clamp(0.55rem, 0.85vh, 0.72rem);
-  font-weight: 800;
-  color: #fde047;
-  letter-spacing: 1px;
-}
-
-.side-brand-name {
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 18px;
-  font-size: clamp(1rem, 1.8vh, 1.35rem);
-  font-weight: 800;
-  line-height: 1.15;
-  color: #ffffff;
-  background: linear-gradient(135deg, #ffffff 0%, #fef08a 30%, #eab308 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.side-brand-sub {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  font-size: clamp(0.58rem, 0.9vh, 0.75rem);
-  color: #cbd5e1;
-  letter-spacing: 1.5px;
-}
-
-/* Floating Brand Tag inside Large Viewer */
-.viewer-brand-tag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 5;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  background: rgba(5, 7, 13, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  padding: 4px 10px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-}
-
-.tag-logo-img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  margin-right: 6px;
-}
-
-.tag-text {
-  font-size: 10px;
-  font-weight: 800;
-  color: #fde047;
-  letter-spacing: 1px;
-}
-
-/* Trust Badges */
-.trust-vector-grid {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  margin-top: 8px;
-}
-
-.trust-badge {
-  width: 31.5%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 5px 6px;
-}
-
-.trust-svg-icon {
-  color: #d4af37;
-  margin-right: 5px;
-  flex-shrink: 0;
-}
-
-.trust-label-group {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-
-.trust-main {
-  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.1;
-}
-
-.trust-sub {
-  font-size: 8px;
-  color: #94a3b8;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
 }
 
 /* ==========================================================================
@@ -1612,32 +1429,12 @@ html, body {
         </div>
       </section>
 
-      <!-- RIGHT: REFINED GALLERY SHOWCASE & OFFICIAL STORE LOCATION -->
-            <!-- RIGHT: REFINED GALLERY SHOWCASE WITH STORE LOGO & ENLARGED IMAGES -->
-      <aside class="showcase-section" aria-label="Featured Jewellery Collection & Royal Showcase">
+      <!-- RIGHT: REFINED GALLERY SHOWCASE (BIG FULL-HEIGHT BANNER SLIDESHOW) -->
+      <aside class="showcase-section" aria-label="Featured Jewellery Collection">
         <div class="showcase-panel">
           
-          <!-- Side Display Royal Brand & Logo Banner -->
-          <div class="side-brand-banner">
-            <div class="side-logo-box">
-              <img src="assets/logo.png" alt="Shree Shubha Laxmi Jewellery Royal Emblem" class="side-display-logo">
-              <div class="side-logo-glow"></div>
-            </div>
-            <div class="side-brand-text">
-              <span class="side-brand-kicker">EXQUISITE JEWELLERY COLLECTION</span>
-              <h3 class="side-brand-name">श्री शुभ लक्ष्मी ज्वेलरी</h3>
-              <span class="side-brand-sub">SHREE SHUBHA LAXMI JEWELLERY</span>
-            </div>
-          </div>
-
-          <!-- Rotating Slideshow Viewer (Enlarged Full-Display) -->
+          <!-- Big Banner Slideshow Viewer -->
           <div class="showcase-viewer">
-            <!-- Floating Brand Tag inside Viewer -->
-            <div class="viewer-brand-tag">
-              <img src="assets/logo.png" alt="Logo" class="tag-logo-img">
-              <span class="tag-text">HALLMARK CERTIFIED</span>
-            </div>
-
             <div class="slides-container" id="slidesContainer">
               <div class="slide active" data-title="परम्परागत ब्राइडल रानीहार" data-subtitle="Royal Traditional Bridal Collection">
                 <img src="assets/necklace.jpg" alt="Bridal Gold Necklace Set" loading="eager">
@@ -1660,49 +1457,6 @@ html, body {
                 <span class="indicator-dot active" data-index="0"></span>
                 <span class="indicator-dot" data-index="1"></span>
                 <span class="indicator-dot" data-index="2"></span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hallmark & Craftsmanship Vector Badges -->
-          <div class="trust-vector-grid">
-            <div class="trust-badge">
-              <span class="trust-svg-icon">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  <path d="m9 12 2 2 4-4"/>
-                </svg>
-              </span>
-              <div class="trust-label-group">
-                <strong class="trust-main">१००% हलमार्क</strong>
-                <span class="trust-sub">Certified Purity</span>
-              </div>
-            </div>
-
-            <div class="trust-badge">
-              <span class="trust-svg-icon">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              </span>
-              <div class="trust-label-group">
-                <strong class="trust-main">विशेष अर्डर</strong>
-                <span class="trust-sub">Custom Ornaments</span>
-              </div>
-            </div>
-
-            <div class="trust-badge">
-              <span class="trust-svg-icon">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                  <path d="M3 3v5h5"/>
-                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
-                  <path d="M16 16h5v5"/>
-                </svg>
-              </span>
-              <div class="trust-label-group">
-                <strong class="trust-main">सट्टापट्टा सुविधा</strong>
-                <span class="trust-sub">Fair Exchange</span>
               </div>
             </div>
           </div>
